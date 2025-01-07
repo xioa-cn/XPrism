@@ -10,19 +10,22 @@ namespace XPrism.Demo;
 /// <summary>
 /// Interaction logic for App.xaml
 /// </summary>
-public partial class App : Application {
+public partial class App : Application
+{
     public static IContainerRegistry ContainerLocator = XPrism.Core.DI.ContainerLocator.Container;
 
 
-    protected override void OnStartup(StartupEventArgs e) {
+    protected override void OnStartup(StartupEventArgs e)
+    {
         base.OnStartup(e);
         ContainerLocator.RegisterSingleton<IEventAggregator, EventAggregator>();
         ContainerLocator.AutoRegisterByAttribute(Assembly.Load("XPrism.Demo"));
         ContainerLocator.AutoRegisterByAttribute<XPrismViewModelAttribute>(Assembly.Load("XPrism.Demo"));
         ContainerLocator.Build();
 
-        var window = App.ContainerLocator.GetService<MainWindow>(nameof(MainWindow));
+        var window = App.ContainerLocator.GetService(nameof(MainWindow)) as Window;
+        if (window is null)
+            throw new NullReferenceException();
         window.Show();
-        
     }
 }

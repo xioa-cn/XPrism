@@ -23,12 +23,14 @@ public partial class MainWindow {
     }
 
     private void PubWindow_Show(object sender, RoutedEventArgs e) {
-        PubWindow window = new PubWindow();
+        //PubWindow window = new PubWindow();
+        var window = App.ContainerLocator.GetService(nameof(PubWindow)) as Window;
         window.Show();
     }
 
     private void SubWindow_Show(object sender, RoutedEventArgs e) {
-        SubWindow window = new SubWindow();
+        //SubWindow window = new SubWindow();
+        var window = App.ContainerLocator.GetService(nameof(SubWindow)) as Window;
         window.Show();
     }
 }

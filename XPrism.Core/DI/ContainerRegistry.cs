@@ -89,6 +89,11 @@ namespace XPrism.Core.DI
             return _container.Resolve(type);
         }
 
+        public object? Resolve(string serviceName)
+        {
+            return _container.Resolve(serviceName);
+        }
+
         public object ResolveNamed(Type type, string name)
         {
             return _container.ResolveNamed(type, name);
@@ -121,6 +126,11 @@ namespace XPrism.Core.DI
         public T GetService<T>()
         {
             return (T)Resolve(typeof(T));
+        }
+
+        public object? GetService(string serviceName)
+        {
+            return Resolve(serviceName);
         }
 
         public object GetService(Type serviceType, string serviceName)

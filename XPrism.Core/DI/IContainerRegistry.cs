@@ -82,6 +82,13 @@ namespace XPrism.Core.DI
         /// <param name="type">要解析的类型</param>
         /// <returns>解析出的实例</returns>
         object Resolve(Type type);
+        
+        /// <summary>
+        /// 解析一个类型的实例
+        /// </summary>
+        /// <param name="serviceName"></param>
+        /// <returns>解析出的实例</returns>
+        object? Resolve(string serviceName);
 
         /// <summary>
         /// 解析一个命名类型的实例
@@ -118,6 +125,8 @@ namespace XPrism.Core.DI
         /// <returns>服务实例</returns>
         T GetService<T>();
 
+        object? GetService(string serviceName);
+        
         /// <summary>
         /// 通过服务名称获取服务实例
         /// </summary>
@@ -132,6 +141,8 @@ namespace XPrism.Core.DI
         /// <param name="serviceType">服务类型</param>
         /// <returns>服务实例</returns>
         object GetService(Type serviceType);
+        
+        
     }
 
    

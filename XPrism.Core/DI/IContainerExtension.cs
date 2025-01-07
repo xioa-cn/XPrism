@@ -48,6 +48,13 @@ namespace XPrism.Core.DI {
         /// <param name="type">要解析的类型</param>
         /// <returns>解析出的实例</returns>
         object Resolve(Type type);
+        
+        /// <summary>
+        /// 解析一个类型的实例
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>解析出的实例</returns>
+        object? Resolve(string name);
 
         /// <summary>
         /// 解析一个命名类型的实例

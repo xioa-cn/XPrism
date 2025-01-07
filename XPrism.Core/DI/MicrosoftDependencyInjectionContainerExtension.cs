@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace XPrism.Core.DI {
+namespace XPrism.Core.DI
+{
     /// <summary>
     /// Microsoft DI容器的实现
     /// </summary>
-    public class MicrosoftDependencyInjectionContainerExtension : IContainerExtension<IServiceProvider> {
+    public class MicrosoftDependencyInjectionContainerExtension : IContainerExtension<IServiceProvider>
+    {
         /// <summary>
         /// 存储类型注册信息的字典
         /// </summary>
@@ -25,39 +27,47 @@ namespace XPrism.Core.DI {
         private readonly Dictionary<Type, ServiceDescriptor> _scopedServices = new();
         private readonly Dictionary<IServiceScope, Dictionary<Type, object>> _scopedInstances = new();
 
-        public MicrosoftDependencyInjectionContainerExtension() {
+        public MicrosoftDependencyInjectionContainerExtension()
+        {
             _services = new Dictionary<Type, ServiceDescriptor>();
             _namedServices = new Dictionary<(Type, string), ServiceDescriptor>();
             _instances = new Dictionary<Type, object>();
         }
 
-        public IServiceProvider Instance { get; private set; }
+        public IServiceProvider? Instance { get; private set; }
 
-        public void FinalizeExtension() {
+        public void FinalizeExtension()
+        {
             Instance = new ServiceProvider(this);
         }
 
-        public void RegisterTransient(Type from, Type to) {
+        public void RegisterTransient(Type from, Type to)
+        {
             _services[from] = new ServiceDescriptor(from, to, ServiceLifetime.Transient);
         }
 
-        public void RegisterTransient(Type from, Type to, string name) {
+        public void RegisterTransient(Type from, Type to, string name)
+        {
             _namedServices[(from, name)] = new ServiceDescriptor(from, to, ServiceLifetime.Transient);
         }
 
-        public void RegisterInstance(Type type, object instance) {
+        public void RegisterInstance(Type type, object instance)
+        {
             _instances[type] = instance;
         }
 
-        public void RegisterSingleton(Type from, Type to) {
+        public void RegisterSingleton(Type from, Type to)
+        {
             _services[from] = new ServiceDescriptor(from, to, ServiceLifetime.Singleton);
         }
 
-        public void RegisterSingleton(Type from, Type to, string name) {
+        public void RegisterSingleton(Type from, Type to, string name)
+        {
             _namedServices[(from, name)] = new ServiceDescriptor(from, to, ServiceLifetime.Singleton);
         }
 
-        public object Resolve(Type type) {
+        public object Resolve(Type type)
+        {
             if (_instances.TryGetValue(type, out var instance))
                 return instance;
 
@@ -75,7 +85,14 @@ namespace XPrism.Core.DI {
             throw new KeyNotFoundException($"Type {type.Name} is not registered");
         }
 
-        public object ResolveNamed(Type type, string name) {
+        public object? Resolve(string name)
+        {
+            var service = _namedServices?.FirstOrDefault(e => e.Key.Item2 == name);
+            return service is not null ? CreateInstance(service.Value.Value) : null;
+        }
+
+        public object ResolveNamed(Type type, string name)
+        {
             if (_namedServices.TryGetValue((type, name), out var descriptor))
             {
                 if (descriptor.Lifetime == ServiceLifetime.Scoped)
@@ -114,6 +131,7 @@ namespace XPrism.Core.DI {
                 {
                     descriptor.CachedInstance = instance;
                 }
+
                 return instance;
             }
 
@@ -140,8 +158,8 @@ namespace XPrism.Core.DI {
                     try
                     {
                         parameterInstances[i] = Activator.CreateInstance(parameter.ParameterType)
-                            ?? throw new InvalidOperationException(
-                                $"Failed to create instance of parameter type {parameter.ParameterType.Name}");
+                                                ?? throw new InvalidOperationException(
+                                                    $"Failed to create instance of parameter type {parameter.ParameterType.Name}");
                     }
                     catch
                     {
@@ -164,29 +182,35 @@ namespace XPrism.Core.DI {
             return result;
         }
 
-        public void RegisterScoped(Type from, Type to) {
+        public void RegisterScoped(Type from, Type to)
+        {
             _scopedServices[from] = new ServiceDescriptor(from, to, ServiceLifetime.Scoped);
         }
 
-        public void RegisterScoped(Type from, Type to, string name) {
+        public void RegisterScoped(Type from, Type to, string name)
+        {
             _namedServices[(from, name)] = new ServiceDescriptor(from, to, ServiceLifetime.Scoped);
         }
 
-        public IServiceScope CreateScope() {
+        public IServiceScope CreateScope()
+        {
             return new ServiceScope(this);
         }
 
-        private class ServiceScope : IServiceScope {
+        private class ServiceScope : IServiceScope
+        {
             private readonly MicrosoftDependencyInjectionContainerExtension _container;
             private readonly Dictionary<(Type Type, string? Name), object> _instances = new();
 
-            public ServiceScope(MicrosoftDependencyInjectionContainerExtension container) {
+            public ServiceScope(MicrosoftDependencyInjectionContainerExtension container)
+            {
                 _container = container;
             }
 
             public IServiceProvider ServiceProvider => new ScopedServiceProvider(this, _container);
 
-            public void Dispose() {
+            public void Dispose()
+            {
                 foreach (var instance in _instances.Values)
                 {
                     (instance as IDisposable)?.Dispose();
@@ -195,7 +219,8 @@ namespace XPrism.Core.DI {
                 _instances.Clear();
             }
 
-            internal object GetOrCreateInstance(Type type, string? name = null) {
+            internal object GetOrCreateInstance(Type type, string? name = null)
+            {
                 var key = (type, name);
                 if (_instances.TryGetValue(key, out var instance))
                 {
@@ -212,16 +237,19 @@ namespace XPrism.Core.DI {
             }
         }
 
-        private class ScopedServiceProvider : IServiceProvider {
+        private class ScopedServiceProvider : IServiceProvider
+        {
             private readonly ServiceScope _scope;
             private readonly MicrosoftDependencyInjectionContainerExtension _container;
 
-            public ScopedServiceProvider(ServiceScope scope, MicrosoftDependencyInjectionContainerExtension container) {
+            public ScopedServiceProvider(ServiceScope scope, MicrosoftDependencyInjectionContainerExtension container)
+            {
                 _scope = scope;
                 _container = container;
             }
 
-            public object GetService(Type serviceType) {
+            public object? GetService(Type serviceType)
+            {
                 if (_container._services.TryGetValue(serviceType, out var descriptor))
                 {
                     return descriptor.Lifetime == ServiceLifetime.Scoped

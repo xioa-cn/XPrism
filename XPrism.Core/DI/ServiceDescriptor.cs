@@ -22,12 +22,12 @@ internal class ServiceDescriptor {
     /// <summary>
     /// 单例实例
     /// </summary>
-    public object Instance { get; }
+    public object? Instance { get; }
 
     /// <summary>
     /// 缓存的实例（用于单例模式）
     /// </summary>
-    public object CachedInstance { get; set; }
+    public object? CachedInstance { get; set; }
 
     public ServiceDescriptor(Type serviceType, Type implementationType, ServiceLifetime lifetime) {
         ServiceType = serviceType;

@@ -11,3 +11,16 @@ F:\git\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\refint\XPrism.Core.dll
 F:\git\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\XPrism.Core.pdb
 F:\git\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\ref\XPrism.Core.dll
 F:\git\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\XPrism.Core.sourcelink.json
+E:\git仓库\github\XPrism\XPrism.Core\bin\Debug\net8.0-windows\XPrism.Core.deps.json
+E:\git仓库\github\XPrism\XPrism.Core\bin\Debug\net8.0-windows\XPrism.Core.dll
+E:\git仓库\github\XPrism\XPrism.Core\bin\Debug\net8.0-windows\XPrism.Core.pdb
+E:\git仓库\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\XPrism.Core.csproj.AssemblyReference.cache
+E:\git仓库\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\XPrism.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\git仓库\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\XPrism.Core.AssemblyInfoInputs.cache
+E:\git仓库\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\XPrism.Core.AssemblyInfo.cs
+E:\git仓库\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\XPrism.Core.csproj.CoreCompileInputs.cache
+E:\git仓库\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\XPrism.Core.sourcelink.json
+E:\git仓库\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\XPrism.Core.dll
+E:\git仓库\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\refint\XPrism.Core.dll
+E:\git仓库\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\XPrism.Core.pdb
+E:\git仓库\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\ref\XPrism.Core.dll

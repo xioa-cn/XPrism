@@ -1,12 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "5QtCeZ3tjQA=",
+  "dgSpecHash": "heGbuhR4K9mdHof4HiIawPTb4pjV1UN9MIAhji5Q1lN2qtMVOU9Ewaoqc3jG/xoDXo06V64JD+lNM7Og74dZwA==",
   "success": true,
-  "projectFilePath": "F:\\git\\github\\XPrism\\XPrism.Demo\\XPrism.Demo.csproj",
+  "projectFilePath": "E:\\git仓库\\github\\XPrism\\XPrism.Demo\\XPrism.Demo.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Administrator\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\9.0.0\\microsoft.extensions.dependencyinjection.9.0.0.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.0\\microsoft.extensions.dependencyinjection.abstractions.9.0.0.nupkg.sha512"
+    "D:\\nuget\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512"
   ],
   "logs": []
 }

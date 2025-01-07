@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj": {}
+    "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj": {}
   },
   "projects": {
-    "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj": {
+    "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj",
+        "projectUniqueName": "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj",
         "projectName": "XPrism.Core",
-        "projectPath": "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "F:\\git\\github\\XPrism\\XPrism.Core\\obj\\",
+        "projectPath": "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj",
+        "packagesPath": "D:\\nuget",
+        "outputPath": "E:\\git仓库\\github\\XPrism\\XPrism.Core\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "E:\\SDK\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\刘\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,13 +35,7 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "all"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+        }
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -54,10 +44,6 @@
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.4.0, )"
-            },
-            "Microsoft.Extensions.DependencyInjection": {
-              "target": "Package",
-              "version": "[9.0.0, )"
             }
           },
           "imports": [
@@ -79,7 +65,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
