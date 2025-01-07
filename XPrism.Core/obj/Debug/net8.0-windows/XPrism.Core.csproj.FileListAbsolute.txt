@@ -10,3 +10,4 @@ F:\git\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\XPrism.Core.dll
 F:\git\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\refint\XPrism.Core.dll
 F:\git\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\XPrism.Core.pdb
 F:\git\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\ref\XPrism.Core.dll
+F:\git\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\XPrism.Core.sourcelink.json

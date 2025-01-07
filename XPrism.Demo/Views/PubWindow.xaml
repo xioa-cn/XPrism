@@ -1,22 +1,21 @@
-﻿<Window x:Class="XPrism.Demo.Views.PubWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:XPrism.Demo.Views"
-        xmlns:vm="clr-namespace:XPrism.Demo.ViewModels"
-        mc:Ignorable="d"
-        Title="PubWindow" Height="450" Width="800">
-    <Window.DataContext>
-        <vm:PubViewModel />
-    </Window.DataContext>
+﻿<xPrism:XPrismWindow x:Class="XPrism.Demo.Views.PubWindow"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:local="clr-namespace:XPrism.Demo.Views"
+                     xmlns:vm="clr-namespace:XPrism.Demo.ViewModels"
+                     xmlns:xPrism="clr-namespace:XPrism.Core.DataContextWindow;assembly=XPrism.Core"
+                     mc:Ignorable="d"
+                     Title="PubWindow" Height="450" Width="800">
+
     <StackPanel>
         <TextBlock Width="200" Height="50" Margin="10" Text="{Binding Content}"></TextBlock>
         <Button Width="200" Height="50" Margin="10" Command="{Binding LoginCommand}">Pub(Has Token)</Button>
         <Button Width="200" Height="50" Margin="10" Command="{Binding LoginTokenCommand}">Pub(No Token)</Button>
-        
-        
+
+
         <Button Width="200" Height="50" Margin="10" Command="{Binding Login1Command}">Pub(filter Has Token)</Button>
         <Button Width="200" Height="50" Margin="10" Command="{Binding LoginToken1Command}">Pub(filter No Token)</Button>
     </StackPanel>
-</Window>
+</xPrism:XPrismWindow>

@@ -98,8 +98,27 @@ namespace XPrism.Core.DI {
             if (descriptor.Lifetime == ServiceLifetime.Singleton && descriptor.CachedInstance != null)
                 return descriptor.CachedInstance;
 
-            // 获取构造函数
-            var constructor = descriptor.ImplementationType.GetConstructors()
+            // 获取所有构造函数
+            var constructors = descriptor.ImplementationType.GetConstructors();
+            if (!constructors.Any())
+            {
+                // 如果没有公共构造函数，尝试创建实例
+                var instance = Activator.CreateInstance(descriptor.ImplementationType);
+                if (instance == null)
+                {
+                    throw new InvalidOperationException(
+                        $"Failed to create instance of type {descriptor.ImplementationType.Name}");
+                }
+
+                if (descriptor.Lifetime == ServiceLifetime.Singleton)
+                {
+                    descriptor.CachedInstance = instance;
+                }
+                return instance;
+            }
+
+            // 按参数数量降序排序，优先使用参数最多的构造函数
+            var constructor = constructors
                 .OrderByDescending(c => c.GetParameters().Length)
                 .First();
 
@@ -117,20 +136,32 @@ namespace XPrism.Core.DI {
                 }
                 else
                 {
-                    throw new InvalidOperationException(
-                        $"Cannot resolve parameter of type {parameter.ParameterType.Name} " +
-                        $"for {descriptor.ImplementationType.Name}");
+                    // 如果参数类型未注册，尝试创建默认实例
+                    try
+                    {
+                        parameterInstances[i] = Activator.CreateInstance(parameter.ParameterType)
+                            ?? throw new InvalidOperationException(
+                                $"Failed to create instance of parameter type {parameter.ParameterType.Name}");
+                    }
+                    catch
+                    {
+                        throw new InvalidOperationException(
+                            $"Cannot resolve parameter of type {parameter.ParameterType.Name} " +
+                            $"for {descriptor.ImplementationType.Name}. Make sure it is registered in the container.");
+                    }
                 }
             }
 
             // 创建实例
-            var instance = constructor.Invoke(parameterInstances);
+            var result = constructor.Invoke(parameterInstances);
 
             // 如果是单例，缓存实例
             if (descriptor.Lifetime == ServiceLifetime.Singleton)
-                descriptor.CachedInstance = instance;
+            {
+                descriptor.CachedInstance = result;
+            }
 
-            return instance;
+            return result;
         }
 
         public void RegisterScoped(Type from, Type to) {

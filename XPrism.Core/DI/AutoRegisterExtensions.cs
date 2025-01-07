@@ -1,12 +1,11 @@
 using System.Reflection;
+using XPrism.Core.DataContextWindow;
 
-namespace XPrism.Core.DI
-{
+namespace XPrism.Core.DI {
     /// <summary>
     /// 自动注册的扩展方法
     /// </summary>
-    public static class AutoRegisterExtensions
-    {
+    public static class AutoRegisterExtensions {
         /// <summary>
         /// 自动注册程序集中的类型
         /// </summary>
@@ -17,8 +16,7 @@ namespace XPrism.Core.DI
         public static IContainerRegistry AutoRegister(
             this IContainerRegistry containerRegistry,
             IEnumerable<Assembly> assemblies,
-            Func<Type, bool>? filter = null)
-        {
+            Func<Type, bool>? filter = null) {
             var types = assemblies
                 .SelectMany(a => a.GetTypes())
                 .Where(t => !t.IsAbstract && !t.IsInterface && !t.IsGenericType);
@@ -51,8 +49,7 @@ namespace XPrism.Core.DI
         /// <returns>容器注册表实例</returns>
         public static IContainerRegistry AutoRegister(
             this IContainerRegistry containerRegistry,
-            Func<Type, bool>? filter = null)
-        {
+            Func<Type, bool>? filter = null) {
             return containerRegistry.AutoRegister(new[] { Assembly.GetExecutingAssembly() }, filter);
         }
 
@@ -64,8 +61,7 @@ namespace XPrism.Core.DI
         /// <returns>容器注册表实例</returns>
         public static IContainerRegistry AutoRegisterByNamespace(
             this IContainerRegistry containerRegistry,
-            string namespacePrefix)
-        {
+            string namespacePrefix) {
             return containerRegistry.AutoRegister(
                 new[] { Assembly.GetExecutingAssembly() },
                 type => type.Namespace?.StartsWith(namespacePrefix) == true);
@@ -78,20 +74,29 @@ namespace XPrism.Core.DI
         /// <param name="containerRegistry">容器注册表</param>
         /// <returns>容器注册表实例</returns>
         public static IContainerRegistry AutoRegisterByAttribute<TAttribute>(
-            this IContainerRegistry containerRegistry) where TAttribute : Attribute
-        {
-            return containerRegistry.AutoRegister(
-                new[] { Assembly.GetExecutingAssembly() },
-                type => type.GetCustomAttribute<TAttribute>() != null);
+            this IContainerRegistry containerRegistry,
+            params Assembly[] assemblies) where TAttribute : XPrismViewModelAttribute {
+            var types = (assemblies.Length == 0
+                    ? new[] { Assembly.GetExecutingAssembly() }
+                    : assemblies)
+                .SelectMany(a => a.GetTypes())
+                .Where(t => !t.IsAbstract && !t.IsInterface &&
+                            t.GetCustomAttribute<TAttribute>() != null);
+
+            foreach (var type in types)
+            {
+                RegisterTypeByWindowAttribute(containerRegistry, type);
+            }
+
+            return containerRegistry;
         }
 
         /// <summary>
         /// 根据特性注册类型
         /// </summary>
         private static void RegisterTypeByAttribute(
-            IContainerRegistry containerRegistry, 
-            Type type)
-        {
+            IContainerRegistry containerRegistry,
+            Type type) {
             var attribute = type.GetCustomAttribute<AutoRegisterAttribute>();
             if (attribute == null) return;
 
@@ -99,9 +104,9 @@ namespace XPrism.Core.DI
             if (attribute.ServiceType != null)
             {
                 RegisterByLifetime(
-                    containerRegistry, 
-                    attribute.ServiceType, 
-                    type, 
+                    containerRegistry,
+                    attribute.ServiceType,
+                    type,
                     attribute.Lifetime,
                     attribute.ServiceName);
                 return;
@@ -115,9 +120,9 @@ namespace XPrism.Core.DI
             if (!interfaces.Any())
             {
                 RegisterByLifetime(
-                    containerRegistry, 
-                    type, 
-                    type, 
+                    containerRegistry,
+                    type,
+                    type,
                     attribute.Lifetime,
                     attribute.ServiceName);
                 return;
@@ -127,12 +132,30 @@ namespace XPrism.Core.DI
             foreach (var @interface in interfaces)
             {
                 RegisterByLifetime(
-                    containerRegistry, 
-                    @interface, 
-                    type, 
+                    containerRegistry,
+                    @interface,
+                    type,
                     attribute.Lifetime,
                     attribute.ServiceName);
             }
+        }
+
+        /// <summary>
+        /// 根据特性注册类型
+        /// </summary>
+        private static void RegisterTypeByWindowAttribute(
+            IContainerRegistry containerRegistry,
+            Type type) {
+            var attribute = type.GetCustomAttribute<XPrismViewModelAttribute>();
+            if (attribute == null) return;
+            
+            RegisterByLifetime(
+                containerRegistry,
+                type,
+                type,
+                attribute.Lifetime,
+                attribute.ViewName);
+            return;
         }
 
         private static void RegisterByLifetime(
@@ -140,8 +163,7 @@ namespace XPrism.Core.DI
             Type serviceType,
             Type implementationType,
             ServiceLifetime lifetime,
-            string? serviceName = null)
-        {
+            string? serviceName = null) {
             if (serviceName != null)
             {
                 switch (lifetime)
@@ -179,14 +201,13 @@ namespace XPrism.Core.DI
         /// </summary>
         public static IContainerRegistry AutoRegisterByAttribute(
             this IContainerRegistry containerRegistry,
-            params Assembly[] assemblies)
-        {
-            var types = (assemblies.Length == 0 
-                ? new[] { Assembly.GetExecutingAssembly() } 
-                : assemblies)
+            params Assembly[] assemblies) {
+            var types = (assemblies.Length == 0
+                    ? new[] { Assembly.GetExecutingAssembly() }
+                    : assemblies)
                 .SelectMany(a => a.GetTypes())
-                .Where(t => !t.IsAbstract && !t.IsInterface && 
-                           t.GetCustomAttribute<AutoRegisterAttribute>() != null);
+                .Where(t => !t.IsAbstract && !t.IsInterface &&
+                            t.GetCustomAttribute<AutoRegisterAttribute>() != null);
 
             foreach (var type in types)
             {
@@ -196,10 +217,9 @@ namespace XPrism.Core.DI
             return containerRegistry;
         }
 
-        private static bool IsSystemInterface(Type type)
-        {
+        private static bool IsSystemInterface(Type type) {
             return type.Namespace?.StartsWith("System") == true ||
                    type.Namespace?.StartsWith("Microsoft") == true;
         }
     }
-} 
+}

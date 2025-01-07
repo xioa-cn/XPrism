@@ -11,7 +11,6 @@ F:\git\github\XPrism\XPrism.Demo\obj\Debug\net8.0-windows\MainWindow.g.cs
 F:\git\github\XPrism\XPrism.Demo\obj\Debug\net8.0-windows\Views\PubWindow.g.cs
 F:\git\github\XPrism\XPrism.Demo\obj\Debug\net8.0-windows\Views\SubWindow.g.cs
 F:\git\github\XPrism\XPrism.Demo\obj\Debug\net8.0-windows\App.g.cs
-F:\git\github\XPrism\XPrism.Demo\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
 F:\git\github\XPrism\XPrism.Demo\obj\Debug\net8.0-windows\XPrism.Demo_MarkupCompile.cache
 F:\git\github\XPrism\XPrism.Demo\obj\Debug\net8.0-windows\XPrism.Demo_MarkupCompile.lref
 F:\git\github\XPrism\XPrism.Demo\obj\Debug\net8.0-windows\MainWindow.baml
@@ -30,3 +29,4 @@ F:\git\github\XPrism\XPrism.Demo\obj\Debug\net8.0-windows\XPrism.Demo.genruntime
 F:\git\github\XPrism\XPrism.Demo\obj\Debug\net8.0-windows\ref\XPrism.Demo.dll
 F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll
 F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+F:\git\github\XPrism\XPrism.Demo\obj\Debug\net8.0-windows\XPrism.Demo.sourcelink.json

@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Windows;
+using XPrism.Core.DataContextWindow;
 using XPrism.Core.DI;
 using XPrism.Core.Events;
 using XPrism.Demo.ViewModels;
@@ -14,12 +15,14 @@ public partial class App : Application {
 
 
     protected override void OnStartup(StartupEventArgs e) {
+        base.OnStartup(e);
         ContainerLocator.RegisterSingleton<IEventAggregator, EventAggregator>();
         ContainerLocator.AutoRegisterByAttribute(Assembly.Load("XPrism.Demo"));
+        ContainerLocator.AutoRegisterByAttribute<XPrismViewModelAttribute>(Assembly.Load("XPrism.Demo"));
         ContainerLocator.Build();
-        var model = ContainerLocator.GetService<PubViewModel>(nameof(PubViewModel));
-        model.Content = "Conte";
-        var model1 = ContainerLocator.GetService<PubViewModel>(nameof(PubViewModel));
-        base.OnStartup(e);
+
+        var window = App.ContainerLocator.GetService<MainWindow>(nameof(MainWindow));
+        window.Show();
+        
     }
 }

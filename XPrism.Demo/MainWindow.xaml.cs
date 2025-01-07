@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using XPrism.Core.DataContextWindow;
 using XPrism.Demo.Views;
 
 namespace XPrism.Demo;
@@ -15,7 +16,8 @@ namespace XPrism.Demo;
 /// <summary>
 /// Interaction logic for MainWindow.xaml
 /// </summary>
-public partial class MainWindow : Window {
+[XPrismViewModel(nameof(MainWindow))]
+public partial class MainWindow {
     public MainWindow() {
         InitializeComponent();
     }

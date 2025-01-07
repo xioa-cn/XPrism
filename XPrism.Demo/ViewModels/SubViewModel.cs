@@ -1,10 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using XPrism.Core.BindableBase;
+using XPrism.Core.DI;
 using XPrism.Core.Events;
 using XPrism.Demo.Model;
 
 namespace XPrism.Demo.ViewModels;
 
+[AutoRegister(ServiceLifetime.Singleton, nameof(SubViewModel))]
 public partial class SubViewModel : ViewModelBase {
     private readonly IEventAggregator _eventAggregator;
     private SubscriptionToken? _token1;
@@ -24,10 +26,10 @@ public partial class SubViewModel : ViewModelBase {
 
         // 订阅事件
         _token1 = _eventAggregator.GetEvent<UserLoggedInEvent>()
-            .Subscribe<string,string>(OnUserLoggedIn, ThreadOption.UIThread, true, "Value");
+            .Subscribe<string, string>(OnUserLoggedIn, ThreadOption.UIThread, true, "Value");
 
         _token2 = _eventAggregator.GetEvent<UserLoggedInEvent>()
-            .Subscribe<string,string>(OnUserLoggedIn1, ThreadOption.UIThread, true, "Value",
+            .Subscribe<string, string>(OnUserLoggedIn1, ThreadOption.UIThread, true, "Value",
                 filter => filter.Role == "Admin");
 
         _token3 = _eventAggregator.GetEvent<UserLoggedInEvent>()
@@ -52,31 +54,34 @@ public partial class SubViewModel : ViewModelBase {
         Username = arg.Username;
         return "filter 有 Token:" + arg.Username;
     }
+
     private async Task<string> OnUserLoggedIn(UserInfo arg) {
         Username = arg.Username;
         return "有 Token:" + arg.Username;
     }
-    
+
 
     [RelayCommand]
     private void Unsubscribe1() {
         _eventAggregator.GetEvent<UserLoggedInEvent>().Unsubscribe(_token1);
     }
+
     [RelayCommand]
     private void Unsubscribe2() {
         _eventAggregator.GetEvent<UserLoggedInEvent>().Unsubscribe(_token2);
     }
+
     [RelayCommand]
     private void Unsubscribe3() {
         _eventAggregator.GetEvent<UserLoggedInEvent>().Unsubscribe(_token3);
     }
+
     [RelayCommand]
     private void Unsubscribe4() {
         _eventAggregator.GetEvent<UserLoggedInEvent>().Unsubscribe(_token4);
     }
 
 
-  
     public void Dispose() {
         _token1?.Dispose();
     }

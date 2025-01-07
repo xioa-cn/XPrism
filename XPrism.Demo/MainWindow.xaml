@@ -1,13 +1,14 @@
-﻿<Window x:Class="XPrism.Demo.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:XPrism.Demo"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+﻿<xPrism:XPrismWindow x:Class="XPrism.Demo.MainWindow"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:local="clr-namespace:XPrism.Demo" 
+                     xmlns:xPrism="clr-namespace:XPrism.Core.DataContextWindow;assembly=XPrism.Core"
+                     mc:Ignorable="d"
+                     Title="MainWindow" Height="450" Width="800">
     <StackPanel>
         <Button Click="PubWindow_Show" Width="200" Height="50" Margin="10">PubWindow</Button>
         <Button Click="SubWindow_Show" Width="200" Height="50" Margin="10">SubWindow</Button>
     </StackPanel>
-</Window>
+</xPrism:XPrismWindow>
