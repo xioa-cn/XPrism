@@ -67,7 +67,7 @@ namespace XPrism.Core.DI {
         }
 
         public IContainerRegistry Initialized() {
-            //_container.RegisterInstance(IContainerProvider,ContainerLocator.Container._container);
+            _container.RegisterInstance(typeof(IContainerProvider),this.GetIContainerExtension());
             _container.RegisterInstance(typeof(IContainerRegistry), ContainerLocator.Container);
             return this;
         }

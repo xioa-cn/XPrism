@@ -24,3 +24,10 @@ E:\git仓库\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\XPrism.Core.dll
 E:\git仓库\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\refint\XPrism.Core.dll
 E:\git仓库\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\XPrism.Core.pdb
 E:\git仓库\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\ref\XPrism.Core.dll
+F:\git\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\XPrism.Core_MarkupCompile.cache
+F:\git\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\XPrism.Core_MarkupCompile.lref
+F:\git\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\XPrism.Core.g.resources
+F:\git\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\Dialogs\MessageDialogView.g.cs
+F:\git\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\Dialogs\MessageDialogView.baml
+F:\git\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\Dialogs\ConfirmDialogView.g.cs
+F:\git\github\XPrism\XPrism.Core\obj\Debug\net8.0-windows\Dialogs\ConfirmDialogView.baml

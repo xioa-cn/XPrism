@@ -24,6 +24,17 @@
           }
         }
       },
+      "DialogModules/1.0.0": {
+        "dependencies": {
+          "XPrism.Core": "1.0.0"
+        },
+        "runtime": {
+          "DialogModules.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "HomeModules/1.0.0": {
         "dependencies": {
           "XPrism.Core": "1.0.0"
@@ -37,6 +48,7 @@
       },
       "MainModules/1.0.0": {
         "dependencies": {
+          "DialogModules": "1.0.0",
           "HomeModules": "1.0.0",
           "XPrism.Core": "1.0.0"
         },
@@ -72,6 +84,11 @@
       "sha512": "sha512-tqVU8yc/ADO9oiTRyTnwhFN68hCwvkliMierptWOudIAvWY1mWCh5VFh+guwHJmpMwfg0J0rY+yyd5Oy7ty9Uw==",
       "path": "communitytoolkit.mvvm/8.4.0",
       "hashPath": "communitytoolkit.mvvm.8.4.0.nupkg.sha512"
+    },
+    "DialogModules/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "HomeModules/1.0.0": {
       "type": "project",
