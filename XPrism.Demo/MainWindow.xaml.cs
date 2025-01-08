@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using XPrism.Core.DataContextWindow;
+using XPrism.Core.DI;
 using XPrism.Demo.Views;
 
 namespace XPrism.Demo;
@@ -24,13 +25,13 @@ public partial class MainWindow {
 
     private void PubWindow_Show(object sender, RoutedEventArgs e) {
         //PubWindow window = new PubWindow();
-        var window = App.ContainerLocator.GetService(nameof(PubWindow)) as Window;
+        var window = XPrismIoc.Fetch(nameof(PubWindow)) as Window;
         window.Show();
     }
 
     private void SubWindow_Show(object sender, RoutedEventArgs e) {
         //SubWindow window = new SubWindow();
-        var window = App.ContainerLocator.GetService(nameof(SubWindow)) as Window;
+        var window = XPrismIoc.Fetch(nameof(SubWindow)) as Window;
         window.Show();
     }
 }

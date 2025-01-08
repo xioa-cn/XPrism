@@ -15,33 +15,25 @@ namespace XPrism.Demo;
 /// Interaction logic for App.xaml
 /// </summary>
 public partial class App : Application {
-    public static IContainerRegistry ContainerLocator = XPrism.Core.DI.ContainerLocator.Container;
-
-
     protected override void OnStartup(StartupEventArgs e) {
         base.OnStartup(e);
-        ContainerLocator.Initialized()
+        XPrism.Core.DI.ContainerLocator.Container.Initialized()
             .RegisterSingleton<IEventAggregator, EventAggregator>();
-        ContainerLocator.AutoRegisterByAttribute(Assembly.Load("XPrism.Demo"));
+        XPrism.Core.DI.ContainerLocator.Container.AutoRegisterByAttribute(Assembly.Load("XPrism.Demo"));
 
         // 1. 配置容器
-        ContainerLocator
+        XPrism.Core.DI.ContainerLocator.Container
             .RegisterSingleton<IEventAggregator, EventAggregator>()
             .RegisterSingleton<IModuleFinder>(new DirectoryModuleFinder())
             .RegisterMeModuleManager(manager => { manager.LoadModulesConfig(AppDomain.CurrentDomain.BaseDirectory); });
 
-        ContainerLocator.RegisterSingleton<UserInfo>(new UserInfo(), nameof(UserInfo));
+        XPrism.Core.DI.ContainerLocator.Container.RegisterSingleton<UserInfo>(new UserInfo(), nameof(UserInfo));
 
-        // // 2. 加载模块
-        // var moduleManager = ContainerLocator.GetService<IModuleManager>();
-        // moduleManager.LoadModules();
+        XPrism.Core.DI.ContainerLocator.Container.AutoRegisterByAttribute<XPrismViewModelAttribute>(
+            Assembly.Load("XPrism.Demo"));
+        XPrism.Core.DI.ContainerLocator.Container.Build();
 
-        ContainerLocator.AutoRegisterByAttribute<XPrismViewModelAttribute>(Assembly.Load("XPrism.Demo"));
-        ContainerLocator.Build();
-
-        var u = ContainerLocator.GetService("MainViewModel");
-
-        var window = App.ContainerLocator.GetService(nameof(MainWindow)) as Window;
+        var window = NavigationWindow.Fetch("MainModulesMainWindow");
         if (window is null)
             throw new NullReferenceException();
         window.Show();

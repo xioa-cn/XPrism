@@ -16,3 +16,8 @@ F:\git\github\XPrism\MainModules\obj\Debug\net8.0-windows\MainModules.dll
 F:\git\github\XPrism\MainModules\obj\Debug\net8.0-windows\refint\MainModules.dll
 F:\git\github\XPrism\MainModules\obj\Debug\net8.0-windows\MainModules.pdb
 F:\git\github\XPrism\MainModules\obj\Debug\net8.0-windows\ref\MainModules.dll
+F:\git\github\XPrism\MainModules\obj\Debug\net8.0-windows\MainModules_MarkupCompile.cache
+F:\git\github\XPrism\MainModules\obj\Debug\net8.0-windows\MainModules_MarkupCompile.lref
+F:\git\github\XPrism\MainModules\obj\Debug\net8.0-windows\MainModules.g.resources
+F:\git\github\XPrism\MainModules\obj\Debug\net8.0-windows\Views\MainModulesMainWindow.g.cs
+F:\git\github\XPrism\MainModules\obj\Debug\net8.0-windows\Views\MainModulesMainWindow.baml
