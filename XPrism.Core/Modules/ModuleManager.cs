@@ -8,12 +8,22 @@ namespace XPrism.Core.Modules {
     /// <summary>
     /// 模块管理器实现
     /// </summary>
-    public class ModuleManager : IModuleManager {
+    public partial class ModuleManager : IModuleManager {
         private readonly IModuleFinder _moduleFinder;
         private readonly IContainerProvider _containerProvider;
         private readonly IContainerRegistry _containerRegistry;
         private readonly Dictionary<string, ModuleInfo> _modulesByName = new();
         private readonly HashSet<string> _initializedModules = new();
+        private readonly Dictionary<string, ModuleInfo> _loadedModules = new();
+        private readonly Dictionary<string, Assembly> _loadedAssemblies = new();
+
+        public void RecordLoadedModule(string moduleName, ModuleInfo moduleInfo) {
+            _loadedModules[moduleName] = moduleInfo;
+        }
+
+        public void RecordLoadedAssembly(string assemblyName, Assembly assembly) {
+            _loadedAssemblies[assemblyName] = assembly;
+        }
 
         public ModuleManager(
             IModuleFinder moduleFinder
@@ -60,12 +70,15 @@ namespace XPrism.Core.Modules {
 
             try
             {
+                // 记录模块实例
+                moduleInfo.Instance = module;
                 // 注册模块服务
                 module.RegisterTypes(_containerRegistry);
 
                 // 初始化模块
                 module.OnInitialized(_containerProvider);
 
+                RecordLoadedModule(moduleName, moduleInfo);
                 _initializedModules.Add(moduleName);
             }
             catch (Exception ex)
@@ -82,7 +95,18 @@ namespace XPrism.Core.Modules {
                 assemblyFile += ".dll";
             }
 
-            var assembly = Assembly.LoadFrom(assemblyFile);
+            Assembly assembly;
+            if (_loadedAssemblies.TryGetValue(assemblyFile, out var loadedAssembly))
+            {
+                assembly = loadedAssembly;
+            }
+            else
+            {
+                assembly = Assembly.LoadFrom(assemblyFile);
+                _loadedAssemblies[assemblyPath] = assembly;
+            }
+
+
             var moduleTypes = assembly.GetTypes()
                 .Where(t => typeof(IModule).IsAssignableFrom(t) && !t.IsAbstract);
 
@@ -118,6 +142,103 @@ namespace XPrism.Core.Modules {
                 throw new InvalidOperationException(
                     $"Failed to create module instance of type {moduleType.Name}", ex);
             }
+        }
+
+        public void UnloadModule(string moduleName) {
+            if (!_loadedModules.TryGetValue(moduleName, out var moduleInfo))
+            {
+                throw new InvalidOperationException($"Module {moduleName} is not loaded.");
+            }
+
+            // 检查是否有其他模块依赖此模块
+            var dependentModules = _loadedModules.Values
+                .Where(m => m.DependsOn.Contains(moduleName))
+                .ToList();
+
+            if (dependentModules.Any())
+            {
+                throw new InvalidOperationException(
+                    $"Cannot unload module {moduleName} because it is required by: {string.Join(", ", dependentModules.Select(m => m.ModuleName))}");
+            }
+
+            // 清理模块资源
+            CleanupModule(moduleName);
+
+            // 从已加载模块列表中移除
+            _loadedModules.Remove(moduleName);
+        }
+
+        public void UnloadModule(string assembly, string moduleName) {
+            if (!_loadedAssemblies.ContainsKey(assembly))
+            {
+                throw new InvalidOperationException($"Assembly {assembly} is not loaded.");
+            }
+
+            UnloadModule(moduleName);
+        }
+
+        public void CleanupModule(string moduleName) {
+            if (!_loadedModules.TryGetValue(moduleName, out var moduleInfo))
+            {
+                throw new InvalidOperationException($"Module {moduleName} is not loaded.");
+            }
+
+            try
+            {
+                // 如果模块实现了 IDisposable，调用 Dispose 方法
+                if (moduleInfo.Instance is IDisposable disposable)
+                {
+                    disposable.Dispose();
+                }
+
+                // 如果模块实现了自定义的清理接口，调用清理方法
+                if (moduleInfo.Instance is IModuleCleanup cleanup)
+                {
+                    cleanup.Cleanup();
+                }
+
+                // 从容器中移除模块的服务注册
+                if (moduleInfo.Instance is IModuleShutdown module)
+                {
+                    module.OnShutdown(_containerRegistry);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error cleaning up module {moduleName}: {ex.Message}");
+                throw;
+            }
+        }
+
+        public void CleanupAllModules() {
+            // 按依赖关系的反序清理模块
+            var sortedModules = _loadedModules.Values
+                    .OrderByDescending<ModuleInfo, int>(m => m.DependsOn.Count())
+                ;
+
+            foreach (var moduleInfo in sortedModules)
+            {
+                try
+                {
+                    CleanupModule(moduleInfo.ModuleName);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error cleaning up module {moduleInfo.ModuleName}: {ex.Message}");
+                    // 继续清理其他模块
+                }
+            }
+
+            _loadedModules.Clear();
+            _loadedAssemblies.Clear();
+        }
+
+        public bool IsModuleLoaded(string moduleName) {
+            return _loadedModules.ContainsKey(moduleName);
+        }
+
+        public IEnumerable<ModuleInfo> GetLoadedModules() {
+            return _loadedModules.Values;
         }
     }
 }

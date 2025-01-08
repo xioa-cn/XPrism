@@ -18,5 +18,7 @@ namespace XPrism.Core.Modules
         /// </summary>
         /// <param name="containerProvider">容器提供者</param>
         void OnInitialized(IContainerProvider containerProvider);
+        
+        
     }
 } 

@@ -83,6 +83,8 @@ public static class FindModulesHelper {
             {
                 manager.LoadModule(itemModule.AssemblyFile,moduleName);
             }
+           
+            
         }
         
         return manager;

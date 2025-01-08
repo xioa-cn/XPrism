@@ -1,10 +1,13 @@
-namespace XPrism.Core.Modules.Find
-{
+namespace XPrism.Core.Modules.Find {
     /// <summary>
     /// 模块信息
     /// </summary>
-    public class ModuleInfo
-    {
+    public class ModuleInfo {
+        /// <summary>
+        /// 模块实例
+        /// </summary>
+        public object Instance { get; set; }
+
         /// <summary>
         /// 模块类型
         /// </summary>
@@ -26,18 +29,22 @@ namespace XPrism.Core.Modules.Find
         public IEnumerable<string> DependsOn { get; }
 
         /// <summary>
+        /// 模块状态
+        /// </summary>
+        public ModuleState State { get; set; } = ModuleState.NotLoaded;
+
+        /// <summary>
         /// 初始化模块信息
         /// </summary>
         public ModuleInfo(
-            Type moduleType, 
+            Type moduleType,
             string moduleName,
             bool isOnDemand = false,
-            IEnumerable<string>? dependsOn = null)
-        {
+            IEnumerable<string>? dependsOn = null) {
             ModuleType = moduleType;
             ModuleName = moduleName;
             IsOnDemand = isOnDemand;
             DependsOn = dependsOn ?? Array.Empty<string>();
         }
     }
-} 
+}
