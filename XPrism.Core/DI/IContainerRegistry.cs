@@ -1,10 +1,13 @@
-namespace XPrism.Core.DI
-{
+using XPrism.Core.Modules;
+
+namespace XPrism.Core.DI {
     /// <summary>
     /// 定义容器注册表的接口，用于配置依赖注入容器
     /// </summary>
-    public interface IContainerRegistry
-    {
+    public interface IContainerRegistry {
+
+        public IContainerExtension<IServiceProvider> GetIContainerExtension();
+        //internal  IContainerExtension<IServiceProvider> _container { get; }
         /// <summary>
         /// 注册一个瞬时生命周期的类型映射
         /// </summary>
@@ -13,6 +16,8 @@ namespace XPrism.Core.DI
         /// <returns>容器注册表实例</returns>
         IContainerRegistry RegisterTransient(Type from, Type to);
 
+        //IContainerRegistry RegisterModules(string[] assemblies);
+        
         /// <summary>
         /// 注册一个瞬时生命周期的命名类型映射
         /// </summary>
@@ -38,6 +43,11 @@ namespace XPrism.Core.DI
         /// <returns>容器注册表实例</returns>
         IContainerRegistry RegisterSingleton(Type from, Type to);
 
+        IContainerRegistry RegisterSingleton<T>(Type from, Type to, Action<T> registerAction);
+        
+
+        IContainerRegistry Initialized();
+        
         /// <summary>
         /// 注册一个单例类型映射
         /// </summary>
@@ -46,6 +56,12 @@ namespace XPrism.Core.DI
         /// <param name="name">服务名称</param>
         /// <returns>容器注册表实例</returns>
         public IContainerRegistry RegisterSingleton(Type from, Type to, string name);
+
+        public IContainerRegistry RegisterSingleton<T>(
+            T value,string name =null) where T : class;
+
+        public IContainerRegistry RegisterScoped<T>(
+            T value,string name =null) where T : class;
 
         /// <summary>
         /// 获取容器扩展实例
@@ -82,7 +98,7 @@ namespace XPrism.Core.DI
         /// <param name="type">要解析的类型</param>
         /// <returns>解析出的实例</returns>
         object Resolve(Type type);
-        
+
         /// <summary>
         /// 解析一个类型的实例
         /// </summary>
@@ -126,7 +142,7 @@ namespace XPrism.Core.DI
         T GetService<T>();
 
         object? GetService(string serviceName);
-        
+
         /// <summary>
         /// 通过服务名称获取服务实例
         /// </summary>
@@ -143,7 +159,6 @@ namespace XPrism.Core.DI
         object GetService(Type serviceType);
         
         
+        
     }
-
-   
-} 
+}

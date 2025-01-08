@@ -1,23 +1,23 @@
-namespace XPrism.Core.DI
-{
+using XPrism.Core.Modules;
+
+namespace XPrism.Core.DI {
     /// <summary>
     /// 容器注册表的实现
     /// </summary>
-    internal class ContainerRegistry : IContainerRegistry
-    {
-        private readonly IContainerExtension<IServiceProvider> _container;
+    internal class ContainerRegistry : IContainerRegistry {
+        internal readonly IContainerExtension<IServiceProvider> _container;
         private readonly HashSet<(Type Type, string Name)> _namedServices = new();
         private IServiceProvider? _builtContainer;
 
-        public ContainerRegistry()
-        {
+        public ContainerRegistry() {
             _container = new MicrosoftDependencyInjectionContainerExtension();
         }
 
+        public IContainerExtension<IServiceProvider> GetIContainerExtension() => _container;
+
         public IServiceProvider Container => _builtContainer ??= Build();
 
-        public IServiceProvider Build()
-        {
+        public IServiceProvider Build() {
             if (_builtContainer != null)
             {
                 return _builtContainer;
@@ -28,90 +28,113 @@ namespace XPrism.Core.DI
             return _builtContainer;
         }
 
-        private void ValidateNamedService(Type type, string name)
-        {
+        private void ValidateNamedService(Type type, string name) {
             var key = (type, name);
             if (_namedServices.Contains(key))
             {
                 throw new InvalidOperationException(
                     $"Service of type {type.Name} with name '{name}' is already registered.");
             }
+
             _namedServices.Add(key);
         }
 
-        public IContainerRegistry RegisterTransient(Type from, Type to)
-        {
+        public IContainerRegistry RegisterTransient(Type from, Type to) {
             _container.RegisterTransient(from, to);
             return this;
         }
 
-        public IContainerRegistry RegisterTransient(Type from, Type to, string name)
-        {
+
+        public IContainerRegistry RegisterTransient(Type from, Type to, string name) {
             ValidateNamedService(from, name);
             _container.RegisterTransient(from, to, name);
             return this;
         }
 
-        public IContainerRegistry RegisterInstance(Type type, object instance)
-        {
+        public IContainerRegistry RegisterInstance(Type type, object instance) {
             _container.RegisterInstance(type, instance);
             return this;
         }
 
-        public IContainerRegistry RegisterSingleton(Type from, Type to)
-        {
+        public IContainerRegistry RegisterSingleton(Type from, Type to) {
             _container.RegisterSingleton(from, to);
             return this;
         }
-        
-        public IContainerRegistry RegisterSingleton(Type from, Type to, string name)
-        {
+
+        public IContainerRegistry RegisterSingleton<T>(Type from, Type to, Action<T> registerAction) {
+            _container.RegisterSingleton(from, to, registerAction);
+            return this;
+        }
+
+        public IContainerRegistry Initialized() {
+            //_container.RegisterInstance(IContainerProvider,ContainerLocator.Container._container);
+            _container.RegisterInstance(typeof(IContainerRegistry), ContainerLocator.Container);
+            return this;
+        }
+
+        public IContainerRegistry RegisterSingleton(Type from, Type to, string name) {
             ValidateNamedService(from, name);
             _container.RegisterSingleton(from, to, name);
             return this;
         }
 
-        public IContainerRegistry RegisterScoped(Type from, Type to)
-        {
+        /// <summary>
+        /// 注册单例服务
+        /// </summary>
+        /// <typeparam name="T">服务类型</typeparam>
+        /// <param name="value">服务实例</param>
+        /// <param name="name">服务实例名称</param>
+        /// <returns>容器注册表</returns>
+        public IContainerRegistry RegisterSingleton<T>(T value, string? name = null) where T : class {
+            _container.RegisterInstance(typeof(T), value, name);
+            return this;
+        }
+
+        /// <summary>
+        /// 注册作用域服务
+        /// </summary>
+        /// <typeparam name="T">服务类型</typeparam>
+        /// <param name="value">服务实例</param>
+        /// <param name="name">服务实例名称</param>
+        /// <returns>容器注册表</returns>
+        public IContainerRegistry RegisterScoped<T>(T value, string? name = null) where T : class {
+            _container.RegisterInstance(typeof(T), value, name);
+            return this;
+        }
+
+        public IContainerRegistry RegisterScoped(Type from, Type to) {
             _container.RegisterScoped(from, to);
             return this;
         }
 
-        public IContainerRegistry RegisterScoped(Type from, Type to, string name)
-        {
+        public IContainerRegistry RegisterScoped(Type from, Type to, string name) {
             ValidateNamedService(from, name);
             _container.RegisterScoped(from, to, name);
             return this;
         }
 
-        public object Resolve(Type type)
-        {
+        public object Resolve(Type type) {
             return _container.Resolve(type);
         }
 
-        public object? Resolve(string serviceName)
-        {
+        public object? Resolve(string serviceName) {
             return _container.Resolve(serviceName);
         }
 
-        public object ResolveNamed(Type type, string name)
-        {
+        public object ResolveNamed(Type type, string name) {
             return _container.ResolveNamed(type, name);
         }
 
-        public IContainerExtension GetContainer()
-        {
+        public IContainerExtension GetContainer() {
             _container.FinalizeExtension();
             return _container;
         }
 
-        public IServiceScope CreateScope()
-        {
+        public IServiceScope CreateScope() {
             return _container.CreateScope();
         }
 
-        public T GetService<T>(string serviceName)
-        {
+        public T GetService<T>(string serviceName) {
             try
             {
                 return (T)ResolveNamed(typeof(T), serviceName);
@@ -123,18 +146,15 @@ namespace XPrism.Core.DI
             }
         }
 
-        public T GetService<T>()
-        {
+        public T GetService<T>() {
             return (T)Resolve(typeof(T));
         }
 
-        public object? GetService(string serviceName)
-        {
+        public object? GetService(string serviceName) {
             return Resolve(serviceName);
         }
 
-        public object GetService(Type serviceType, string serviceName)
-        {
+        public object GetService(Type serviceType, string serviceName) {
             try
             {
                 return ResolveNamed(serviceType, serviceName);
@@ -146,9 +166,8 @@ namespace XPrism.Core.DI
             }
         }
 
-        public object GetService(Type serviceType)
-        {
+        public object GetService(Type serviceType) {
             return Resolve(serviceType);
         }
     }
-} 
+}

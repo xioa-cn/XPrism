@@ -4,7 +4,7 @@ namespace XPrism.Core.DI {
     /// <summary>
     /// 定义依赖注入容器的基本操作接口
     /// </summary>
-    public interface IContainerExtension {
+    public interface IContainerExtension : IContainerProvider {
         /// <summary>
         /// 注册一个类型映射（瞬时生命周期）
         /// </summary>
@@ -28,11 +28,21 @@ namespace XPrism.Core.DI {
         void RegisterInstance(Type type, object instance);
 
         /// <summary>
+        /// 注册一个单例实例
+        /// </summary>
+        /// <param name="type">服务类型</param>
+        /// <param name="instance">实例对象</param>
+        /// <param name="name">实例对象</param>
+        void RegisterInstance(Type type, object instance, string? name);
+
+        /// <summary>
         /// 注册一个单例类型映射（带名称）
         /// </summary>
         /// <param name="from">服务类型</param>
         /// <param name="to">实现类型</param>
         void RegisterSingleton(Type from, Type to);
+
+        void RegisterSingleton<T>(Type from, Type to, Action<T> registerAction);
 
         /// <summary>
         /// 注册一个单例类型映射（带名称）
@@ -48,7 +58,7 @@ namespace XPrism.Core.DI {
         /// <param name="type">要解析的类型</param>
         /// <returns>解析出的实例</returns>
         object Resolve(Type type);
-        
+
         /// <summary>
         /// 解析一个类型的实例
         /// </summary>
@@ -75,14 +85,14 @@ namespace XPrism.Core.DI {
         /// <param name="from">服务类型</param>
         /// <param name="to">实现类型</param>
         void RegisterScoped(Type from, Type to);
-        
+
         /// <summary>
         /// 注册一个作用域生命周期的类型映射
         /// </summary>
         /// <param name="from">服务类型</param>
         /// <param name="to">实现类型</param>
         /// <param name="name">服务名称</param>
-        void RegisterScoped(Type from, Type to,string name);
+        void RegisterScoped(Type from, Type to, string name);
 
         /// <summary>
         /// 创建一个新的作用域
@@ -101,6 +111,4 @@ namespace XPrism.Core.DI {
         /// </summary>
         TContainer Instance { get; }
     }
-
-   
 }

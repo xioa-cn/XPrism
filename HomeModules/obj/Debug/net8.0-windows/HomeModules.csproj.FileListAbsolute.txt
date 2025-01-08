@@ -1,0 +1,16 @@
+F:\git\github\XPrism\HomeModules\bin\Debug\net8.0-windows\HomeModules.deps.json
+F:\git\github\XPrism\HomeModules\bin\Debug\net8.0-windows\HomeModules.dll
+F:\git\github\XPrism\HomeModules\bin\Debug\net8.0-windows\HomeModules.pdb
+F:\git\github\XPrism\HomeModules\bin\Debug\net8.0-windows\XPrism.Core.dll
+F:\git\github\XPrism\HomeModules\bin\Debug\net8.0-windows\XPrism.Core.pdb
+F:\git\github\XPrism\HomeModules\obj\Debug\net8.0-windows\HomeModules.csproj.AssemblyReference.cache
+F:\git\github\XPrism\HomeModules\obj\Debug\net8.0-windows\HomeModules.GeneratedMSBuildEditorConfig.editorconfig
+F:\git\github\XPrism\HomeModules\obj\Debug\net8.0-windows\HomeModules.AssemblyInfoInputs.cache
+F:\git\github\XPrism\HomeModules\obj\Debug\net8.0-windows\HomeModules.AssemblyInfo.cs
+F:\git\github\XPrism\HomeModules\obj\Debug\net8.0-windows\HomeModules.csproj.CoreCompileInputs.cache
+F:\git\github\XPrism\HomeModules\obj\Debug\net8.0-windows\HomeModules.sourcelink.json
+F:\git\github\XPrism\HomeModules\obj\Debug\net8.0-windows\HomeModu.E03CDF0E.Up2Date
+F:\git\github\XPrism\HomeModules\obj\Debug\net8.0-windows\HomeModules.dll
+F:\git\github\XPrism\HomeModules\obj\Debug\net8.0-windows\refint\HomeModules.dll
+F:\git\github\XPrism\HomeModules\obj\Debug\net8.0-windows\HomeModules.pdb
+F:\git\github\XPrism\HomeModules\obj\Debug\net8.0-windows\ref\HomeModules.dll

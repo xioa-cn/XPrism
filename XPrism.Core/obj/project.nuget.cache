@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "WR4MjVGiQdGABncpm99xaEfIrnODRG1l7uqW7YhUX9Yd8XjBvNa4+r2ZjnoEvz+INSDRJJXrgIojTNYoL3pAlQ==",
+  "dgSpecHash": "Yli5wT/LwZk=",
   "success": true,
-  "projectFilePath": "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj",
+  "projectFilePath": "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj",
   "expectedPackageFiles": [
-    "D:\\nuget\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512"
+    "C:\\Users\\Administrator\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512"
   ],
   "logs": []
 }

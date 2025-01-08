@@ -27,8 +27,6 @@ F:\git\github\XPrism\XPrism.Demo\obj\Debug\net8.0-windows\refint\XPrism.Demo.dll
 F:\git\github\XPrism\XPrism.Demo\obj\Debug\net8.0-windows\XPrism.Demo.pdb
 F:\git\github\XPrism\XPrism.Demo\obj\Debug\net8.0-windows\XPrism.Demo.genruntimeconfig.cache
 F:\git\github\XPrism\XPrism.Demo\obj\Debug\net8.0-windows\ref\XPrism.Demo.dll
-F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll
-F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 F:\git\github\XPrism\XPrism.Demo\obj\Debug\net8.0-windows\XPrism.Demo.sourcelink.json
 E:\git仓库\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\XPrism.Demo.exe
 E:\git仓库\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\XPrism.Demo.deps.json
@@ -60,3 +58,8 @@ E:\git仓库\github\XPrism\XPrism.Demo\obj\Debug\net8.0-windows\refint\XPrism.De
 E:\git仓库\github\XPrism\XPrism.Demo\obj\Debug\net8.0-windows\XPrism.Demo.pdb
 E:\git仓库\github\XPrism\XPrism.Demo\obj\Debug\net8.0-windows\XPrism.Demo.genruntimeconfig.cache
 E:\git仓库\github\XPrism\XPrism.Demo\obj\Debug\net8.0-windows\ref\XPrism.Demo.dll
+F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\HomeModules.dll
+F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\MainModules.dll
+F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\HomeModules.pdb
+F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\MainModules.pdb
+F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\modules.config

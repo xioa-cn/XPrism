@@ -29,9 +29,22 @@ internal class ServiceDescriptor {
     /// </summary>
     public object? CachedInstance { get; set; }
 
-    public ServiceDescriptor(Type serviceType, Type implementationType, ServiceLifetime lifetime) {
+    public Action<object>? RegisterAction { get; }
+
+    
+    
+    public ServiceDescriptor(Type serviceType, Type implementationType, ServiceLifetime lifetime,
+        Action<object>? registerAction = null) {
         ServiceType = serviceType;
         ImplementationType = implementationType;
         Lifetime = lifetime;
+        RegisterAction = registerAction;
+    }
+
+    public ServiceDescriptor(Type serviceType, object? instance, ServiceLifetime lifetime,Action<object>? registerAction = null) {
+        ServiceType = serviceType;
+        Instance = instance;
+        Lifetime = lifetime;
+        RegisterAction = registerAction;
     }
 }

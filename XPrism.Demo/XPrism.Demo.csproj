@@ -9,7 +9,15 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\HomeModules\HomeModules.csproj" />
+      <ProjectReference Include="..\MainModules\MainModules.csproj" />
       <ProjectReference Include="..\XPrism.Core\XPrism.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="modules.config">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>
