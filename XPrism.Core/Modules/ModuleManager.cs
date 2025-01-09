@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using XPrism.Core.Co;
 using XPrism.Core.DI;
 using XPrism.Core.Modules.Find;
 
@@ -21,8 +22,10 @@ namespace XPrism.Core.Modules {
             _loadedModules[moduleName] = moduleInfo;
         }
 
+       
         public void RecordLoadedAssembly(string assemblyName, Assembly assembly) {
             _loadedAssemblies[assemblyName] = assembly;
+            //DllManager.LoadDll(Path.Combine(baseDir, assemblyName));
         }
 
         public ModuleManager(
@@ -102,8 +105,9 @@ namespace XPrism.Core.Modules {
             }
             else
             {
-                assembly = Assembly.LoadFrom(assemblyFile);
-                _loadedAssemblies[assemblyPath] = assembly;
+                
+                assembly = DllManager.LoadDll(assemblyFile);
+                RecordLoadedAssembly(assemblyPath, assembly);
             }
 
 
@@ -231,6 +235,7 @@ namespace XPrism.Core.Modules {
 
             _loadedModules.Clear();
             _loadedAssemblies.Clear();
+            DllManager.UnloadAll();
         }
 
         public bool IsModuleLoaded(string moduleName) {

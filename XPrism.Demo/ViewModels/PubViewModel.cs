@@ -9,11 +9,10 @@ namespace XPrism.Demo.ViewModels;
 
 [AutoRegister(ServiceLifetime.Singleton, nameof(PubViewModel))]
 public partial class PubViewModel : ViewModelBase {
-    private readonly IEventAggregator _eventAggregator;
     [ObservableProperty] private string _content;
 
-    public PubViewModel(IEventAggregator eventAggregator) {
-        _eventAggregator = eventAggregator;
+    public PubViewModel(IEventAggregator eventAggregator) : base(eventAggregator) {
+        //_eventAggregator = eventAggregator;
     }
 
     [RelayCommand]

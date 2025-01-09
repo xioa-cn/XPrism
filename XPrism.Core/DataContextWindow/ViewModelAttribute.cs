@@ -5,9 +5,7 @@ namespace XPrism.Core.DataContextWindow {
     /// 用于标记视图对应的ViewModel
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
-    public class XPrismViewModelAttribute : Attribute {
-        public ServiceLifetime Lifetime { get; }
-
+    public class XPrismViewModelAttribute : XPrismBaseAttribute {
         /// <summary>
         /// ViewModel类型
         /// </summary>
@@ -18,7 +16,7 @@ namespace XPrism.Core.DataContextWindow {
         /// </summary>
         public string? ServiceName { get; }
 
-        public string? ViewName { get; }
+        public string ViewName { get; }
 
         /// <summary>
         /// 初始化ViewModel特性
@@ -27,10 +25,9 @@ namespace XPrism.Core.DataContextWindow {
         /// <param name="viewModelType">ViewModel类型 （当viewModelType不为空时 serviceName 也不可以为空）</param>
         /// <param name="serviceName">服务名称 (View Model注册时的名称)</param>
         /// <param name="lifetime">注册时态</param>
-        public XPrismViewModelAttribute(string? viewName, Type? viewModelType = null, string? serviceName = null,
-            ServiceLifetime lifetime = ServiceLifetime.Singleton) {
+        public XPrismViewModelAttribute(string viewName, Type? viewModelType = null, string? serviceName = null,
+            ServiceLifetime lifetime = ServiceLifetime.Singleton) : base(lifetime) {
             ViewName = viewName;
-            Lifetime = lifetime;
             ViewModelType = viewModelType;
             ServiceName = serviceName;
             if (viewModelType == null) return;

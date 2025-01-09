@@ -86,6 +86,22 @@
           "Microsoft.WindowsDesktop.App.WPF"
         ]
       },
+      "ResetResourcesModules/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "XPrism.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ResetResourcesModules.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ResetResourcesModules.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
       "XPrism.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -167,6 +183,11 @@
       "path": "../ModelModules/ModelModules.csproj",
       "msbuildProject": "../ModelModules/ModelModules.csproj"
     },
+    "ResetResourcesModules/1.0.0": {
+      "type": "project",
+      "path": "../ResetResourcesModules/ResetResourcesModules.csproj",
+      "msbuildProject": "../ResetResourcesModules/ResetResourcesModules.csproj"
+    },
     "XPrism.Core/1.0.0": {
       "type": "project",
       "path": "../XPrism.Core/XPrism.Core.csproj",
@@ -177,6 +198,7 @@
     "net8.0-windows7.0": [
       "HomeModules >= 1.0.0",
       "MainModules >= 1.0.0",
+      "ResetResourcesModules >= 1.0.0",
       "XPrism.Core >= 1.0.0"
     ]
   },
@@ -218,6 +240,9 @@
             },
             "F:\\git\\github\\XPrism\\MainModules\\MainModules.csproj": {
               "projectPath": "F:\\git\\github\\XPrism\\MainModules\\MainModules.csproj"
+            },
+            "F:\\git\\github\\XPrism\\ResetResourcesModules\\ResetResourcesModules.csproj": {
+              "projectPath": "F:\\git\\github\\XPrism\\ResetResourcesModules\\ResetResourcesModules.csproj"
             },
             "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj": {
               "projectPath": "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj"

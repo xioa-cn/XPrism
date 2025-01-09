@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DialogModules.Views;
 using XPrism.Core.BindableBase;
+using XPrism.Core.DataContextWindow;
 using XPrism.Core.DI;
 using XPrism.Core.Dialogs;
 
@@ -58,7 +59,21 @@ public partial class MainViewModel : ViewModelBase {
 
     [RelayCommand]
     public void ShowHome() {
-        var view = XPrismIoc.Fetch("HomeModulesHomeWindow") as Window;
+        var view = XPrismIoc.FetchXPrismWindow("HomeModulesHomeWindow");
         view.ShowDialog();
+        view.ResetXPrismWindowVm();
+    }
+
+    [RelayCommand]
+    public void OpenResetView() {
+        var view = XPrismIoc.FetchXPrismWindow("ResetWindow");
+        view.ShowDialog();
+    }
+    
+    [RelayCommand]
+    public void OpenResetVmView() {
+        var view = XPrismIoc.FetchXPrismWindow("ResetWindow");
+        view.ShowDialog();
+        view.ResetXPrismWindowVm();
     }
 }

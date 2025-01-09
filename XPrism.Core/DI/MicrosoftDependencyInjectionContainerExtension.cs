@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using XPrism.Core.DebugLog;
 
 namespace XPrism.Core.DI {
     /// <summary>
@@ -74,33 +76,45 @@ namespace XPrism.Core.DI {
             _services[from] = new ServiceDescriptor(from, to, ServiceLifetime.Singleton);
         }
 
-        public void RegisterSingleton<T>(Type from, Type to, Action<T> registerAction) {
-            // 将泛型 Action<T> 转换为 Action<object>
-            Action<object> wrappedAction = obj =>
+        public void RegisterSingleton<T>(Type from, Type to, Action<T>? registerAction) {
+            if (registerAction is not null)
             {
-                if (obj is T typedInstance)
+                // 将泛型 Action<T> 转换为 Action<object>
+                Action<object> wrappedAction = obj =>
                 {
-                    registerAction(typedInstance);
-                }
-                else
-                {
-                    throw new InvalidOperationException(
-                        $"Cannot configure service: instance is not of type {typeof(T).Name}");
-                }
-            };
-            var service = new ServiceDescriptor(from, to, ServiceLifetime.Singleton, wrappedAction);
-            _services[from] = service;
-            CreateInstance(service);
+                    if (obj is T typedInstance)
+                    {
+                        registerAction(typedInstance);
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException(
+                            $"Cannot configure service: instance is not of type {typeof(T).Name}");
+                    }
+                };
+                var service = new ServiceDescriptor(from, to, ServiceLifetime.Singleton, wrappedAction);
+                _services[from] = service;
+
+                CreateInstance(service);
+            }
+            else
+            {
+                _services[from] = new ServiceDescriptor(from, to, ServiceLifetime.Singleton);
+            }
         }
 
         public void RegisterSingleton(Type from, Type to, string name) {
+            DebugLogger.LogInfo($"RegisterSingleton Type {from} to {to} name {name}");
             _namedServices[(from, name)] = new ServiceDescriptor(from, to, ServiceLifetime.Singleton);
         }
 
 
         public object? Resolve(Type type) {
             if (_instances.TryGetValue(type, out var instance))
+            {
+                DebugLogger.LogInfo($"Resolved instance of type {type.Name}");
                 return instance;
+            }
 
             if (_services.TryGetValue(type, out var descriptor))
             {
@@ -110,6 +124,7 @@ namespace XPrism.Core.DI {
                         $"Cannot resolve scoped service '{type.Name}' from root provider.");
                 }
 
+                DebugLogger.LogInfo($"Resolved instance of type {type.Name} from root provider.");
                 return CreateInstance(descriptor);
             }
 
@@ -151,6 +166,7 @@ namespace XPrism.Core.DI {
             return service is not null ? CreateInstance(service.Value.Value) : null;
         }
 
+
         public object ResolveNamed(Type type, string name) {
             if (_namedServices.TryGetValue((type, name), out var descriptor))
             {
@@ -160,21 +176,46 @@ namespace XPrism.Core.DI {
                         $"Cannot resolve scoped service '{type.Name}' with name '{name}' from root provider.");
                 }
 
+                DebugLogger.LogInfo($"Resolved instance of type {type.Name} from root provider.");
                 return CreateInstance(descriptor);
             }
 
             throw new KeyNotFoundException($"Type {type.Name} with name '{name}' is not registered");
         }
 
+        public void ResetService(string name) {
+            var service = _namedServices?.FirstOrDefault(e => e.Key.Item2 == name);
+            if (service is null)
+            {
+                throw new KeyNotFoundException($"Type {name} is not registered");
+            }
+
+            if (service.Value.Value.Instance is not null)
+                throw new Exception("Cannot reset service Instance");
+            DebugLogger.LogInfo($"Resetting instance of type {service.Value.Key.Item2} from root provider.");
+            service.Value.Value.CachedInstance = null;
+        }
+
         private object CreateInstance(ServiceDescriptor descriptor, bool action = false) {
+            DebugLogger.LogInfo($"Get of {descriptor.ServiceType.FullName}");
             if (descriptor.Instance != null)
+            {
+                DebugLogger.LogInfo($"{descriptor.ServiceType.FullName} is in Instance");
                 return descriptor.Instance;
+            }
+
 
             if (descriptor.Lifetime == ServiceLifetime.Singleton && descriptor.Instance != null)
+            {
+                //DebugLogger.LogInfo($"{descriptor.ServiceType.FullName} is in Instance");
                 return descriptor.Instance;
+            }
 
             if (descriptor.Lifetime == ServiceLifetime.Singleton && descriptor.CachedInstance != null)
+            {
+                DebugLogger.LogInfo($"{descriptor.ServiceType.FullName} is in CachedInstance");
                 return descriptor.CachedInstance;
+            }
 
             if (descriptor.ImplementationType == typeof(IContainerProvider))
             {
@@ -187,6 +228,7 @@ namespace XPrism.Core.DI {
             {
                 // 如果没有公共构造函数，尝试创建实例
                 var instance = Activator.CreateInstance(descriptor.ImplementationType);
+                DebugLogger.LogInfo($"{descriptor.ServiceType.FullName} is in default constructor");
                 if (instance == null)
                 {
                     throw new InvalidOperationException(
@@ -208,7 +250,8 @@ namespace XPrism.Core.DI {
 
             var parameters = constructor.GetParameters();
             var parameterInstances = new object[parameters.Length];
-
+            DebugLogger.LogInfo(
+                $"{descriptor.ServiceType.FullName} is in constructor on type {parameterInstances.Length} parameters");
             // 解析构造函数参数
             for (var i = 0; i < parameters.Length; i++)
             {
@@ -216,10 +259,12 @@ namespace XPrism.Core.DI {
                 // 使用容器解析参数
                 if (_services.TryGetValue(parameter.ParameterType, out var parameterDescriptor))
                 {
+                    DebugLogger.LogInfo($"TryGetValue : parameter {parameter.Name} in _services.");
                     parameterInstances[i] = CreateInstance(parameterDescriptor);
                 }
                 else if (_instances.TryGetValue(parameter.ParameterType, out var instanceDescriptor))
                 {
+                    DebugLogger.LogInfo($"TryGetValue : parameter {parameter.Name} in _instances.");
                     parameterInstances[i] = instanceDescriptor;
                 }
                 else
@@ -227,6 +272,7 @@ namespace XPrism.Core.DI {
                     // 如果参数类型未注册，尝试创建默认实例
                     try
                     {
+                        DebugLogger.LogInfo($"TryCreateInstance : parameter {parameterInstances[i]}");
                         parameterInstances[i] = Activator.CreateInstance(parameter.ParameterType)
                                                 ?? throw new InvalidOperationException(
                                                     $"Failed to create instance of parameter type {parameter.ParameterType.Name}");
@@ -246,6 +292,7 @@ namespace XPrism.Core.DI {
             // 如果是单例，缓存实例
             if (descriptor.Lifetime == ServiceLifetime.Singleton)
             {
+                DebugLogger.LogInfo($"Cache {descriptor.ServiceType.FullName} is in CachedInstance");
                 descriptor.CachedInstance = result;
                 if (descriptor.RegisterAction != null)
                 {

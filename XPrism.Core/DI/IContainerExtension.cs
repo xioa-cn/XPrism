@@ -42,7 +42,7 @@ namespace XPrism.Core.DI {
         /// <param name="to">实现类型</param>
         void RegisterSingleton(Type from, Type to);
 
-        void RegisterSingleton<T>(Type from, Type to, Action<T> registerAction);
+        void RegisterSingleton<T>(Type from, Type to, Action<T>? registerAction);
 
         /// <summary>
         /// 注册一个单例类型映射（带名称）
@@ -57,7 +57,7 @@ namespace XPrism.Core.DI {
         /// </summary>
         /// <param name="type">要解析的类型</param>
         /// <returns>解析出的实例</returns>
-        object Resolve(Type type);
+        object? Resolve(Type type);
 
         /// <summary>
         /// 解析一个类型的实例
@@ -66,6 +66,13 @@ namespace XPrism.Core.DI {
         /// <returns>解析出的实例</returns>
         object? Resolve(string name);
 
+        /// <summary>
+        /// 重新实例资源资源
+        /// </summary>
+        /// <param name="name"></param>
+        void ResetService(string name);
+        
+        
         /// <summary>
         /// 解析一个命名类型的实例
         /// </summary>

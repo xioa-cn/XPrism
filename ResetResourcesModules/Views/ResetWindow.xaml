@@ -1,0 +1,15 @@
+﻿<xPrism:XPrismWindow x:Class="ResetResourcesModules.Views.ResetWindow"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:local="clr-namespace:ResetResourcesModules.Views"
+                     xmlns:vm="clr-namespace:ResetResourcesModules.ViewModel"
+                     d:DataContext="{d:DesignInstance Type=vm:ResetViewModel}"
+                     xmlns:xPrism="clr-namespace:XPrism.Core.DataContextWindow;assembly=XPrism.Core"
+                     mc:Ignorable="d"
+                     Title="ResetWindow" Height="450" Width="800">
+    <Grid>
+        <TextBox Text="{Binding Message}" Height="50" Width="200"></TextBox>
+    </Grid>
+</xPrism:XPrismWindow>

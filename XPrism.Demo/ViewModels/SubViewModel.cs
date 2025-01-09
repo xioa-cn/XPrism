@@ -8,7 +8,6 @@ namespace XPrism.Demo.ViewModels;
 
 [AutoRegister(ServiceLifetime.Singleton, nameof(SubViewModel))]
 public partial class SubViewModel : ViewModelBase {
-    private readonly IEventAggregator _eventAggregator;
     private SubscriptionToken? _token1;
     private SubscriptionToken? _token2;
     private SubscriptionToken? _token3;
@@ -20,9 +19,8 @@ public partial class SubViewModel : ViewModelBase {
         set => SetProperty(ref _username, value);
     }
 
-    public SubViewModel(IEventAggregator eventAggregator) {
-        _eventAggregator = eventAggregator;
-
+    public SubViewModel(IEventAggregator eventAggregator):base(eventAggregator) {
+       
 
         // 订阅事件
         _token1 = _eventAggregator.GetEvent<UserLoggedInEvent>()

@@ -11,6 +11,7 @@
     <ItemGroup>
       <ProjectReference Include="..\HomeModules\HomeModules.csproj" />
       <ProjectReference Include="..\MainModules\MainModules.csproj" />
+      <ProjectReference Include="..\ResetResourcesModules\ResetResourcesModules.csproj" />
       <ProjectReference Include="..\XPrism.Core\XPrism.Core.csproj" />
     </ItemGroup>
 

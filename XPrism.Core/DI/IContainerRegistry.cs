@@ -5,8 +5,8 @@ namespace XPrism.Core.DI {
     /// 定义容器注册表的接口，用于配置依赖注入容器
     /// </summary>
     public interface IContainerRegistry {
-
         public IContainerExtension<IServiceProvider> GetIContainerExtension();
+
         //internal  IContainerExtension<IServiceProvider> _container { get; }
         /// <summary>
         /// 注册一个瞬时生命周期的类型映射
@@ -17,7 +17,7 @@ namespace XPrism.Core.DI {
         IContainerRegistry RegisterTransient(Type from, Type to);
 
         //IContainerRegistry RegisterModules(string[] assemblies);
-        
+
         /// <summary>
         /// 注册一个瞬时生命周期的命名类型映射
         /// </summary>
@@ -43,11 +43,11 @@ namespace XPrism.Core.DI {
         /// <returns>容器注册表实例</returns>
         IContainerRegistry RegisterSingleton(Type from, Type to);
 
-        IContainerRegistry RegisterSingleton<T>(Type from, Type to, Action<T> registerAction);
-        
+        IContainerRegistry RegisterSingleton<T>(Type from, Type to, Action<T>? registerAction);
+
 
         IContainerRegistry Initialized();
-        
+
         /// <summary>
         /// 注册一个单例类型映射
         /// </summary>
@@ -58,10 +58,10 @@ namespace XPrism.Core.DI {
         public IContainerRegistry RegisterSingleton(Type from, Type to, string name);
 
         public IContainerRegistry RegisterSingleton<T>(
-            T value,string name =null) where T : class;
+            T value, string name = null) where T : class;
 
         public IContainerRegistry RegisterScoped<T>(
-            T value,string name =null) where T : class;
+            T value, string name = null) where T : class;
 
         /// <summary>
         /// 获取容器扩展实例
@@ -141,7 +141,18 @@ namespace XPrism.Core.DI {
         /// <returns>服务实例</returns>
         T GetService<T>();
 
+        /// <summary>
+        /// 通过名称获取实例
+        /// </summary>
+        /// <param name="serviceName"></param>
+        /// <returns></returns>
         object? GetService(string serviceName);
+
+        /// <summary>
+        /// 重置资源名称
+        /// </summary>
+        /// <param name="serviceName"></param>
+        void ResetService(string serviceName);
 
         /// <summary>
         /// 通过服务名称获取服务实例
@@ -157,8 +168,5 @@ namespace XPrism.Core.DI {
         /// <param name="serviceType">服务类型</param>
         /// <returns>服务实例</returns>
         object GetService(Type serviceType);
-        
-        
-        
     }
 }

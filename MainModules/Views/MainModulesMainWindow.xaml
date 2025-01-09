@@ -23,5 +23,7 @@
         <Button Command="{Binding ShowErrorExampleCommand}">显示错误对话框</Button>
         <Button Command="{Binding ShowCustomDialogExampleCommand}">显示自定义对话框</Button>
         <Button Command="{Binding ShowHomeCommand}">打开Home页面</Button>
+        <Button Command="{Binding OpenResetViewCommand}">打开测试清理界面</Button>
+        <Button Command="{Binding OpenResetVmViewCommand}">打开测试清理界面</Button>
     </StackPanel>
 </xPrism:XPrismWindow>

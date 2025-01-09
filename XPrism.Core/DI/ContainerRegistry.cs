@@ -1,3 +1,4 @@
+using XPrism.Core.DebugLog;
 using XPrism.Core.Modules;
 
 namespace XPrism.Core.DI {
@@ -32,8 +33,11 @@ namespace XPrism.Core.DI {
             var key = (type, name);
             if (_namedServices.Contains(key))
             {
-                throw new InvalidOperationException(
-                    $"Service of type {type.Name} with name '{name}' is already registered.");
+                // 允许卸载 重新注册
+                _namedServices.Remove(key);
+                _namedServices.Add(key);
+                // throw new InvalidOperationException(
+                //     $"Service of type {type.Name} with name '{name}' is already registered.");
             }
 
             _namedServices.Add(key);
@@ -61,13 +65,13 @@ namespace XPrism.Core.DI {
             return this;
         }
 
-        public IContainerRegistry RegisterSingleton<T>(Type from, Type to, Action<T> registerAction) {
+        public IContainerRegistry RegisterSingleton<T>(Type from, Type to, Action<T>? registerAction) {
             _container.RegisterSingleton(from, to, registerAction);
             return this;
         }
 
         public IContainerRegistry Initialized() {
-            _container.RegisterInstance(typeof(IContainerProvider),this.GetIContainerExtension());
+            _container.RegisterInstance(typeof(IContainerProvider), this.GetIContainerExtension());
             _container.RegisterInstance(typeof(IContainerRegistry), ContainerLocator.Container);
             return this;
         }
@@ -114,14 +118,17 @@ namespace XPrism.Core.DI {
         }
 
         public object Resolve(Type type) {
+            //DebugLogger.LogInfo($"Resolving type {type}");
             return _container.Resolve(type);
         }
 
         public object? Resolve(string serviceName) {
+            //DebugLogger.LogInfo($"Resolving serviceName {serviceName}");
             return _container.Resolve(serviceName);
         }
 
         public object ResolveNamed(Type type, string name) {
+            //DebugLogger.LogInfo($"Resolving type {type} named {name}");
             return _container.ResolveNamed(type, name);
         }
 
@@ -137,6 +144,7 @@ namespace XPrism.Core.DI {
         public T GetService<T>(string serviceName) {
             try
             {
+                //DebugLogger.LogInfo($"Resolving serviceName {serviceName} Type {typeof(T)} :GetService<T> ");
                 return (T)ResolveNamed(typeof(T), serviceName);
             }
             catch (KeyNotFoundException)
@@ -147,11 +155,18 @@ namespace XPrism.Core.DI {
         }
 
         public T GetService<T>() {
+            //DebugLogger.LogInfo($"Resolving type {typeof(T)} :GetService<T> ");
             return (T)Resolve(typeof(T));
         }
 
         public object? GetService(string serviceName) {
+            //DebugLogger.LogInfo($"Resolving serviceName {serviceName}");
             return Resolve(serviceName);
+        }
+
+        public void ResetService(string serviceName) {
+            DebugLogger.LogInfo($"Resetting serviceName {serviceName}");
+            _container.ResetService(serviceName);
         }
 
         public object GetService(Type serviceType, string serviceName) {

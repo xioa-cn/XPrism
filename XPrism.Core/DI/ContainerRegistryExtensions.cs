@@ -30,18 +30,24 @@ public static class ContainerRegistryExtensions {
     }
 
     private static IContainerRegistry RegisterSingleton<TFrom, TTo>(this IContainerRegistry containerRegistry,
-        Action<TFrom> registerAction)
+        Action<TFrom>? registerAction)
         where TTo : TFrom {
         return containerRegistry.RegisterSingleton(typeof(TFrom), typeof(TTo), registerAction);
     }
 
-    public static IContainerRegistry RegisterMeModuleManager(this IContainerRegistry containerRegistry) {
-        return containerRegistry
-            .RegisterSingleton<IModuleManager, ModuleManager>();
-    }
+    // public static IContainerRegistry RegisterMeModuleManager(this IContainerRegistry containerRegistry) {
+    //     return containerRegistry
+    //         .RegisterSingleton<IModuleManager, ModuleManager>();
+    // }
 
+    /// <summary>
+    /// 注册模块管理（在注册之前需要先注册一下 IModuleFinder（模块发现接口）实现）
+    /// </summary>
+    /// <param name="containerRegistry"></param>
+    /// <param name="registerAction"></param>
+    /// <returns></returns>
     public static IContainerRegistry RegisterMeModuleManager(this IContainerRegistry containerRegistry,
-        Action<IModuleManager> registerAction) {
+        Action<IModuleManager>? registerAction = null) {
         return containerRegistry
             .RegisterSingleton<IModuleManager, ModuleManager>(registerAction);
     }
