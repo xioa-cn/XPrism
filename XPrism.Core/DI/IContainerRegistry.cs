@@ -149,7 +149,7 @@ namespace XPrism.Core.DI {
         object? GetService(string serviceName);
 
         /// <summary>
-        /// 重置资源名称
+        /// 重置资源实例
         /// </summary>
         /// <param name="serviceName"></param>
         void ResetService(string serviceName);

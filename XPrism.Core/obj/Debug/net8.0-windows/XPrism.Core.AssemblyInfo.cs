@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("XPrism.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc8de29ae316aa7c579548e6629cf967bc54697b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8e9de7da8dca12217903262c8a4f2c2cefffed69")]
 [assembly: System.Reflection.AssemblyProductAttribute("XPrism.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("XPrism.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

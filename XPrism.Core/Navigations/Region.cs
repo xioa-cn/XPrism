@@ -107,7 +107,7 @@ public class Region : IRegion {
     }
 
     public void RemoveView(string viewName) {
-        throw new NotImplementedException();
+        //TODO 移除视图是为了做什么？ 没有什么意义
     }
 
     protected virtual void OnCurrentViewChanged(object? oldView, object? newView) {

@@ -13,7 +13,7 @@ public static class XPrismIoc {
         return XPrism.Core.DI.ContainerLocator.Container
             .GetService(resourceKey);
     }
-    
+
     /// <summary>
     /// 获取容器内的资源
     /// </summary>
@@ -84,7 +84,7 @@ public static class XPrismIoc {
     /// <param name="resourceKey"></param>
     public static void ResetXPrismModel(string resourceKey) {
         XPrism.Core.DI.ContainerLocator.Container
-            .GetService(resourceKey);
+            .ResetService(resourceKey);
     }
 
     /// <summary>
