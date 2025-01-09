@@ -51,7 +51,7 @@ public class RegionManager : IRegionManager {
     /// <summary>
     /// 注册视图和ViewModel到导航系统
     /// </summary>
-    public void RegisterForNavigation<TView, TViewModel>(string regionName, string viewName)
+    public void RegisterForNavigation<TView, TViewModel>(string regionName, string? viewName = null)
         where TView : FrameworkElement
         where TViewModel : class {
         // 注册到容器
@@ -59,7 +59,7 @@ public class RegionManager : IRegionManager {
         ContainerLocator.Container.RegisterSingleton<TViewModel>();
 
         // 注册到导航系统
-        _navigationRegistry.RegisterView<TView, TViewModel>(viewName);
+        _navigationRegistry.RegisterView<TView, TViewModel>(viewName ?? nameof(TView));
 
         // 可以选择自动注册到默认区域
         RegisterViewWithRegion<TView>(regionName, viewName: viewName);

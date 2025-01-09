@@ -44,6 +44,6 @@ public interface IRegionManager {
     /// <param name="viewName">视图访问名称</param>
     /// <typeparam name="TView"></typeparam>
     /// <typeparam name="TViewModel"></typeparam>
-    void RegisterForNavigation<TView, TViewModel>(string regionName, string viewName) where TView : FrameworkElement
+    void RegisterForNavigation<TView, TViewModel>(string regionName, string? viewName = null) where TView : FrameworkElement
         where TViewModel : class;
 }
