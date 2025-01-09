@@ -26,6 +26,7 @@
       },
       "DialogModules/1.0.0": {
         "dependencies": {
+          "ModelModules": "1.0.0",
           "XPrism.Core": "1.0.0"
         },
         "runtime": {
@@ -37,10 +38,22 @@
       },
       "HomeModules/1.0.0": {
         "dependencies": {
+          "DialogModules": "1.0.0",
           "XPrism.Core": "1.0.0"
         },
         "runtime": {
           "HomeModules.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "ModelModules/1.0.0": {
+        "dependencies": {
+          "XPrism.Core": "1.0.0"
+        },
+        "runtime": {
+          "ModelModules.dll": {
             "assemblyVersion": "1.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -78,6 +91,11 @@
       "sha512": ""
     },
     "HomeModules/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ModelModules/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

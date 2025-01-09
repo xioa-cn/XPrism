@@ -24,8 +24,8 @@ namespace XPrism.Core.DataContextWindow {
         /// 初始化ViewModel特性
         /// </summary>
         /// <param name="viewName">window 注册名称</param>
-        /// <param name="viewModelType">ViewModel类型</param>
-        /// <param name="serviceName">服务名称（可选）</param>
+        /// <param name="viewModelType">ViewModel类型 （当viewModelType不为空时 serviceName 也不可以为空）</param>
+        /// <param name="serviceName">服务名称 (View Model注册时的名称)</param>
         /// <param name="lifetime">注册时态</param>
         public XPrismViewModelAttribute(string? viewName, Type? viewModelType = null, string? serviceName = null,
             ServiceLifetime lifetime = ServiceLifetime.Singleton) {
@@ -33,6 +33,8 @@ namespace XPrism.Core.DataContextWindow {
             Lifetime = lifetime;
             ViewModelType = viewModelType;
             ServiceName = serviceName;
+            if (viewModelType == null) return;
+            ArgumentNullException.ThrowIfNull(serviceName);
         }
     }
 }

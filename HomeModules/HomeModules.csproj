@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\DialogModules\DialogModules.csproj" />
       <ProjectReference Include="..\XPrism.Core\XPrism.Core.csproj" />
     </ItemGroup>
 

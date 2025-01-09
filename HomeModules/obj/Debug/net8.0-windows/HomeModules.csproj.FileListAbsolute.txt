@@ -14,3 +14,12 @@ F:\git\github\XPrism\HomeModules\obj\Debug\net8.0-windows\HomeModules.dll
 F:\git\github\XPrism\HomeModules\obj\Debug\net8.0-windows\refint\HomeModules.dll
 F:\git\github\XPrism\HomeModules\obj\Debug\net8.0-windows\HomeModules.pdb
 F:\git\github\XPrism\HomeModules\obj\Debug\net8.0-windows\ref\HomeModules.dll
+F:\git\github\XPrism\HomeModules\obj\Debug\net8.0-windows\Views\HomeModulesHomeWindow.g.cs
+F:\git\github\XPrism\HomeModules\obj\Debug\net8.0-windows\HomeModules_MarkupCompile.cache
+F:\git\github\XPrism\HomeModules\obj\Debug\net8.0-windows\HomeModules_MarkupCompile.lref
+F:\git\github\XPrism\HomeModules\obj\Debug\net8.0-windows\Views\HomeModulesHomeWindow.baml
+F:\git\github\XPrism\HomeModules\obj\Debug\net8.0-windows\HomeModules.g.resources
+F:\git\github\XPrism\HomeModules\bin\Debug\net8.0-windows\DialogModules.dll
+F:\git\github\XPrism\HomeModules\bin\Debug\net8.0-windows\ModelModules.dll
+F:\git\github\XPrism\HomeModules\bin\Debug\net8.0-windows\DialogModules.pdb
+F:\git\github\XPrism\HomeModules\bin\Debug\net8.0-windows\ModelModules.pdb

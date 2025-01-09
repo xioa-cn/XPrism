@@ -50,12 +50,12 @@ public class DialogPresenter : IDialogPresenter {
         {
             OnDialogOpened(dialogWrapper);
             var view = CreateDialogView(dialog);
-            
+
             // 创建TaskCompletionSource来处理对话框结果
             var dialogResult = ((DialogBase<TResult>)dialog).ShowAsync();
-            
+
             var window = ShowDialogView(view, dialog);
-            
+
             // 当窗口关闭时，确保对话框也关闭
             window.Closed += (s, e) =>
             {
@@ -68,15 +68,12 @@ public class DialogPresenter : IDialogPresenter {
             // 当对话框请求关闭时，关闭窗口
             if (dialog is DialogBase<TResult> baseDialog)
             {
-                baseDialog.RequestClose += (s, e) =>
-                {
-                    window.Close();
-                };
+                baseDialog.RequestClose += (s, e) => { window.Close(); };
             }
 
             // 显示对话框并等待结果
             window.ShowDialog();
-            
+
             // 等待并返回结果
             return await dialogResult;
         }
@@ -128,9 +125,13 @@ public class DialogPresenter : IDialogPresenter {
     /// </summary>
     /// <param name="dialog">对话框实例</param>
     /// <returns>创建的视图实例</returns>
-    private object CreateDialogView(object dialog) {
+    private object? CreateDialogView(object dialog) {
         var dialogType = dialog.GetType();
         var viewType = ResolveViewType(dialogType);
+
+        if (viewType == null)
+            throw new Exception($"Could not resolve view type: {dialogType}");
+
         return _container.Resolve(viewType);
     }
 
@@ -139,28 +140,34 @@ public class DialogPresenter : IDialogPresenter {
     /// </summary>
     /// <param name="view">要显示的视图</param>
     /// <param name="dialogViewModel"></param>
-    private Window ShowDialogView(object view, object dialogViewModel) {
-        if (view is FrameworkElement element)
+    private Window ShowDialogView(object? view, object dialogViewModel) {
+        if (view is not FrameworkElement element)
+            throw new InvalidOperationException("View must be a FrameworkElement");
+        var owner = Application.Current.MainWindow;
+        // 获取当前显示的 窗口
+        foreach (Window itemWindow in Application.Current.Windows)
         {
-            var window = new Window
-            {
-                Content = element,
-                Owner = Application.Current.MainWindow,
-                WindowStartupLocation = WindowStartupLocation.CenterOwner,
-                SizeToContent = SizeToContent.WidthAndHeight,
-                ResizeMode = ResizeMode.NoResize,
-                WindowStyle = WindowStyle.None,
-                Background = Brushes.Transparent,
-                AllowsTransparency = true
-            };
-
-            // 设置数据上下文
-            element.DataContext = dialogViewModel;
-
-            return window;
+            if (!itemWindow.IsActive) continue;
+            owner = itemWindow;
+            break;
         }
 
-        throw new InvalidOperationException("View must be a FrameworkElement");
+        var window = new Window {
+            Content = element,
+            Owner = owner,
+            WindowStartupLocation = WindowStartupLocation.CenterOwner,
+            SizeToContent = SizeToContent.WidthAndHeight,
+            ResizeMode = ResizeMode.NoResize,
+            WindowStyle = WindowStyle.None,
+            Background = Brushes.Transparent,
+            AllowsTransparency = true
+        };
+
+        // 设置数据上下文
+        element.DataContext = dialogViewModel;
+
+        return window;
+
     }
 
     /// <summary>
@@ -168,8 +175,7 @@ public class DialogPresenter : IDialogPresenter {
     /// </summary>
     /// <param name="dialogType">对话框类型</param>
     /// <returns>对应的视图类型</returns>
-    private Type ResolveViewType(Type dialogType) {
-        var viewTypeName = dialogType.FullName + "View";
-        return Type.GetType(viewTypeName);
+    private Type? ResolveViewType(Type dialogType) {
+        return DialogPresenterHelper.GetDialogType(dialogType);
     }
 }

@@ -23,3 +23,5 @@ F:\git\github\XPrism\MainModules\obj\Debug\net8.0-windows\Views\MainModulesMainW
 F:\git\github\XPrism\MainModules\obj\Debug\net8.0-windows\Views\MainModulesMainWindow.baml
 F:\git\github\XPrism\MainModules\bin\Debug\net8.0-windows\DialogModules.dll
 F:\git\github\XPrism\MainModules\bin\Debug\net8.0-windows\DialogModules.pdb
+F:\git\github\XPrism\MainModules\bin\Debug\net8.0-windows\ModelModules.dll
+F:\git\github\XPrism\MainModules\bin\Debug\net8.0-windows\ModelModules.pdb

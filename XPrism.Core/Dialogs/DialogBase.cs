@@ -1,10 +1,12 @@
+using XPrism.Core.BindableBase;
+
 namespace XPrism.Core.Dialogs;
 
 /// <summary>
 /// 对话框基类，实现基本的对话框功能
 /// </summary>
 /// <typeparam name="TResult">对话框返回结果的类型</typeparam>
-public abstract class DialogBase<TResult> : IDialog<TResult>, IDialogRequestClose {
+public abstract class DialogBase<TResult> : ViewModelBase, IDialog<TResult>, IDialogRequestClose {
     private bool _isOpen;
     private TaskCompletionSource<TResult> _tcs;
 

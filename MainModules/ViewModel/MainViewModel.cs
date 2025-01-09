@@ -1,6 +1,9 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System.Windows;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using DialogModules.Views;
 using XPrism.Core.BindableBase;
+using XPrism.Core.DI;
 using XPrism.Core.Dialogs;
 
 namespace MainModules.ViewModel;
@@ -21,7 +24,7 @@ public partial class MainViewModel : ViewModelBase {
     public async Task ShowMessageExample() {
         await _dialogService.ShowMessageAsync("这是一条消息", "提示");
     }
-    
+
     /// <summary>
     /// 显示确认对话框
     /// </summary>
@@ -29,7 +32,6 @@ public partial class MainViewModel : ViewModelBase {
     public async Task DeleteItemExample() {
         if (await _dialogService.ShowConfirmAsync("确定要删除这条记录吗？", "确认删除"))
         {
-           
         }
     }
 
@@ -47,14 +49,16 @@ public partial class MainViewModel : ViewModelBase {
     /// </summary>
     [RelayCommand]
     public async Task ShowCustomDialogExample() {
-        // var dialog = new CustomDialog {
-        //     Title = "自定义对话框",
-        // };
-        //
-        // var result = await _dialogService.ShowDialogAsync(dialog);
-        // if (result)
-        // {
-        //     // 处理对话框结果
-        // }
+        var dialog = new SubmitDialog() {
+            Title = "自定义对话框",
+        };
+
+        var result = await _dialogService.ShowDialogAsync(dialog);
+    }
+
+    [RelayCommand]
+    public void ShowHome() {
+        var view = XPrismIoc.Fetch("HomeModulesHomeWindow") as Window;
+        view.ShowDialog();
     }
 }

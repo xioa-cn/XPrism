@@ -1,4 +1,5 @@
-﻿using XPrism.Core.Modules;
+﻿using XPrism.Core.Dialogs;
+using XPrism.Core.Modules;
 
 namespace XPrism.Core.DI;
 
@@ -159,6 +160,32 @@ public static class ContainerRegistryExtensions {
     public static IContainerRegistry RegisterTransient<T>(this IContainerRegistry containerRegistry)
         where T : class {
         return containerRegistry.RegisterTransient(typeof(T), typeof(T));
+    }
+
+
+    /// <summary>
+    /// 注册Dialog使用的基本类
+    /// </summary>
+    /// <param name="containerRegistry"></param>
+    /// <returns></returns>
+    public static IContainerRegistry RegisterDialogServiceCommonBase(this IContainerRegistry containerRegistry) {
+        containerRegistry.RegisterSingleton<IDialogService, DialogService>();
+        containerRegistry.RegisterSingleton<IDialogPresenter, DialogPresenter>();
+        return containerRegistry;
+    }
+
+    /// <summary>
+    /// 注册Dialog 需要先注册 RegisterDialogServiceCommonBase
+    /// </summary>
+    /// <param name="containerRegistry"></param>
+    /// <typeparam name="T">Dialog类</typeparam>
+    /// <typeparam name="TD">Dialog视图</typeparam>
+    /// <returns></returns>
+    public static IContainerRegistry RegisterDialogService<T, TD>(this IContainerRegistry containerRegistry)
+        where TD : class {
+        containerRegistry.RegisterTransient<TD>();
+        DialogPresenterHelper.RegisterDialogType<T, TD>();
+        return containerRegistry;
     }
 
     /// <summary>

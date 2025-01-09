@@ -65,3 +65,5 @@ F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\MainModules.pdb
 F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\modules.config
 F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\DialogModules.dll
 F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\DialogModules.pdb
+F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\ModelModules.dll
+F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\ModelModules.pdb
