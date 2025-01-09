@@ -33,11 +33,11 @@ public partial class App : Application {
             Assembly.Load("XPrism.Demo"));
         XPrism.Core.DI.ContainerLocator.Container.Build();
 
-        var window = NavigationWindow.Fetch("MainModulesMainWindow");
+        var window = NavigationWindow.Fetch("NavigationsWindow");
         //var vm = XPrismIoc.Fetch("ResetViewModel");
         if (window is null)
             throw new NullReferenceException();
-        //var s = DllManager.LoadedContexts;
+        var s = DllManager.LoadedContexts;
         window.Show();
     }
 }

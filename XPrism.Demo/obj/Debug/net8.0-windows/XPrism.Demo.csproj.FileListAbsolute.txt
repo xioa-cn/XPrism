@@ -67,3 +67,7 @@ F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\DialogModules.dll
 F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\DialogModules.pdb
 F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\ModelModules.dll
 F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\ModelModules.pdb
+F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\ResetResourcesModules.dll
+F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\ResetResourcesModules.pdb
+F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\NavigationsModules.dll
+F:\git\github\XPrism\XPrism.Demo\bin\Debug\net8.0-windows\NavigationsModules.pdb

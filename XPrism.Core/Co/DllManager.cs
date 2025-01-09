@@ -9,7 +9,7 @@ public static class DllManager {
 
     public static Dictionary<string, CustomAssemblyLoadContext> LoadedContexts => _loadedContexts;
 
-    public static Assembly LoadDll(string dllPath) {
+    public static Assembly LoadDll(string dllPath, string? name = null) {
         if (_disposed)
             throw new ObjectDisposedException(nameof(DllManager));
 
@@ -18,7 +18,17 @@ public static class DllManager {
 
         var loadContext = new CustomAssemblyLoadContext();
         var assembly = loadContext.LoadFromAssemblyPath(dllPath);
-        _loadedContexts[dllPath] = loadContext;
+
+        if (name == null)
+        {
+            name = dllPath;
+        }
+        else
+        {
+            name = name.Replace(".dll", "");
+        }
+
+        _loadedContexts[name] = loadContext;
 
         return assembly;
     }

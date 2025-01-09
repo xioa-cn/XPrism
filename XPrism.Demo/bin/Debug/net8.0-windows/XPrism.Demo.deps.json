@@ -10,6 +10,8 @@
         "dependencies": {
           "HomeModules": "1.0.0",
           "MainModules": "1.0.0",
+          "NavigationsModules": "1.0.0",
+          "ResetResourcesModules": "1.0.0",
           "XPrism.Core": "1.0.0"
         },
         "runtime": {
@@ -72,6 +74,28 @@
           }
         }
       },
+      "NavigationsModules/1.0.0": {
+        "dependencies": {
+          "XPrism.Core": "1.0.0"
+        },
+        "runtime": {
+          "NavigationsModules.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "ResetResourcesModules/1.0.0": {
+        "dependencies": {
+          "XPrism.Core": "1.0.0"
+        },
+        "runtime": {
+          "ResetResourcesModules.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "XPrism.Core/1.0.0": {
         "dependencies": {
           "CommunityToolkit.Mvvm": "8.4.0"
@@ -114,6 +138,16 @@
       "sha512": ""
     },
     "ModelModules/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NavigationsModules/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ResetResourcesModules/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

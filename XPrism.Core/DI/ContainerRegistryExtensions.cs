@@ -1,5 +1,6 @@
 ﻿using XPrism.Core.Dialogs;
 using XPrism.Core.Modules;
+using XPrism.Core.Navigations;
 
 namespace XPrism.Core.DI;
 
@@ -52,6 +53,19 @@ public static class ContainerRegistryExtensions {
             .RegisterSingleton<IModuleManager, ModuleManager>(registerAction);
     }
 
+    public static IContainerRegistry RegistryNavigations(this IContainerRegistry containerRegistry,
+        Action<IRegionManager>? registerAction = null) {
+        containerRegistry
+            .RegisterSingleton<IRegionManager, RegionManager>();
+        var regionManager = XPrismIoc.Fetch<IRegionManager>();
+        RegionManagerProperty.SetRegionManager(regionManager);
+        if (registerAction != null)
+        {
+            registerAction(regionManager);
+        }
+
+        return containerRegistry;
+    }
 
     /// <summary>
     /// 注册一个单例实例

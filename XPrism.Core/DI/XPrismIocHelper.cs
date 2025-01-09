@@ -13,6 +13,15 @@ public static class XPrismIoc {
         return XPrism.Core.DI.ContainerLocator.Container
             .GetService(resourceKey);
     }
+    
+    /// <summary>
+    /// 获取容器内的资源
+    /// </summary>
+    /// <returns></returns>
+    public static T? Fetch<T>() {
+        return XPrism.Core.DI.ContainerLocator.Container
+            .GetService<T>();
+    }
 
     /// <summary>
     /// 获取容器内的XPrismWindow资源

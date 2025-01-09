@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DialogModules")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8016eb84e17d271d321d05d787cf79521c9520aa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc8de29ae316aa7c579548e6629cf967bc54697b")]
 [assembly: System.Reflection.AssemblyProductAttribute("DialogModules")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DialogModules")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

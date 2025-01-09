@@ -128,6 +128,15 @@ namespace XPrism.Core.DI {
                 return CreateInstance(descriptor);
             }
 
+            var gethavingServices = _namedServices
+                .FirstOrDefault(e => e.Key.Item1 == type);
+
+            if (gethavingServices.Key.Item2 != null)
+            {
+                return Resolve(gethavingServices.Key.Item2);
+            }
+
+
             throw new KeyNotFoundException($"Type {type.Name} is not registered");
         }
 

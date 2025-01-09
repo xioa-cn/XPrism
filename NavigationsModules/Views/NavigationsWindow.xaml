@@ -1,0 +1,26 @@
+﻿<xPrism:XPrismWindow x:Class="NavigationsModules.Views.NavigationsWindow"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:local="clr-namespace:NavigationsModules.Views"
+                     xmlns:vm="clr-namespace:NavigationsModules.ViewModel"
+                     d:DataContext="{d:DesignInstance Type=vm:NavigationsViewModel}"
+                     xmlns:xPrism="clr-namespace:XPrism.Core.DataContextWindow;assembly=XPrism.Core"
+                     xmlns:nav="clr-namespace:XPrism.Core.Navigations;assembly=XPrism.Core"
+                     mc:Ignorable="d"
+                     Title="NavigationsWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <Button Command="{Binding NavigateToPage1Command}" Width="200" Height="50" Margin="10">Nav1</Button>
+            <Button Command="{Binding NavigateToPage2Command}" Width="200" Height="50" Margin="10">Nav1</Button>
+        </StackPanel>
+        <Grid Grid.Column="1">
+            <ContentControl nav:RegionManagerProperty.RegionName="MainRegion"></ContentControl>
+        </Grid>
+    </Grid>
+</xPrism:XPrismWindow>

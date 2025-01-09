@@ -106,7 +106,7 @@ namespace XPrism.Core.Modules {
             else
             {
                 
-                assembly = DllManager.LoadDll(assemblyFile);
+                assembly = DllManager.LoadDll(assemblyFile,assemblyPath);
                 RecordLoadedAssembly(assemblyPath, assembly);
             }
 
