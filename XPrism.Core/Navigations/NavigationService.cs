@@ -9,18 +9,38 @@ namespace XPrism.Core.Navigations;
 /// </summary>
 public class NavigationService : INavigationService {
     private readonly IRegionManager _regionManager;
-    private readonly Stack<NavigationContext> _navigationStack;
+
+    private readonly Dictionary<string, Stack<NavigationContext>?> _navigationStack;
+
+    // private readonly Stack<NavigationContext> _navigationStack;
     private readonly IContainerProvider _container;
 
-    public bool CanGoBack => _navigationStack.Count > 1;
-    public object? CurrentView => _navigationStack.Count > 0 ? _navigationStack.Peek().Target : null;
+    public bool CanGoBack(string regionName) {
+        if (_navigationStack.TryGetValue(regionName, out Stack<NavigationContext>? stack))
+        {
+            return stack != null && stack.Count > 0;
+        }
+
+        return false;
+    }
+
+    public object? CurrentView(string regionName) {
+        if (_navigationStack.TryGetValue(regionName, out Stack<NavigationContext>? stack))
+        {
+            return stack != null && stack.Count > 0
+                ? stack.Peek().Target
+                : null;
+        }
+
+        return null;
+    }
 
     public NavigationService(
         IRegionManager regionManager
     ) {
         _regionManager = regionManager;
         _container = ContainerLocator.Container.GetIContainerExtension();
-        _navigationStack = new Stack<NavigationContext>();
+        _navigationStack = new Dictionary<string, Stack<NavigationContext>?>();
     }
 
     public async Task<bool> NavigateAsync(string path, INavigationParameters? parameters = null) {
@@ -33,17 +53,28 @@ public class NavigationService : INavigationService {
                 throw new Exception("path is regionName and viewName => mainRegion/home ");
             }
 
+            if (parameters == null)
+            {
+                parameters = new NavigationParameters() {
+                    { "NavigationURL", path }
+                };
+            }
+            else
+            {
+                parameters.Add("NavigationURL", path);
+            }
+
             // 获取区域
             var region = _regionManager.Regions.GetRegion(regionName);
 
             // 创建导航上下文
             var context = new NavigationContext(
                 path,
-                parameters ?? new NavigationParameters(),
-                CurrentView);
+                parameters,
+                CurrentView(regionName));
 
             // 处理当前视图的导航
-            if (CurrentView is INavigationAware currentAware)
+            if (CurrentView(regionName) is INavigationAware currentAware)
             {
                 // 检查是否可以离开当前页面
                 if (!await currentAware.CanNavigateFromAsync(context.Parameters))
@@ -69,7 +100,8 @@ public class NavigationService : INavigationService {
                     context.Source,
                     region.CurrentView);
 
-                _navigationStack.Push(newContext);
+                _navigationStack.Push(regionName, newContext);
+                // _navigationStack[regionName] = newContext;
 
                 // 触发导航到事件
                 if (region.CurrentView is INavigationAware targetAware)
@@ -88,15 +120,15 @@ public class NavigationService : INavigationService {
         }
     }
 
-    public async Task<bool> GoBackAsync() {
-        if (!CanGoBack)
+    public async Task<bool> GoBackAsync(string regionName) {
+        if (!CanGoBack(regionName))
             return false;
 
         // 移除当前页面的上下文
-        _navigationStack.Pop();
+        _navigationStack.Pop(regionName);
 
         // 获取上一个页面的上下文
-        var previousContext = _navigationStack.Peek();
+        var previousContext = _navigationStack.Peek(regionName);
 
         // 导航到上一个页面
         return await NavigateAsync(

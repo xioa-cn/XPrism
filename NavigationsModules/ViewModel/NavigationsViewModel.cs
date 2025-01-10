@@ -16,7 +16,10 @@ public partial class NavigationsViewModel : ViewModelBase {
 
     [RelayCommand]
     public async Task NavigateToPage1() {
-        await _navigationService.NavigateAsync("MainRegion/About1View");
+        await _navigationService.NavigateAsync("MainRegion/About1View",new NavigationParameters() {
+            {"key","value"},
+            {"key2","value2"}
+        });
     }
 
     [RelayCommand]

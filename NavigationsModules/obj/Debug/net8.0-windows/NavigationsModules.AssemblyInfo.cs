@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NavigationsModules")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de7aa124318176b2b11190ff3b352c51921a7a30")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+abba950cc1cea871bc0e64f212fe33ba66da85ee")]
 [assembly: System.Reflection.AssemblyProductAttribute("NavigationsModules")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NavigationsModules")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

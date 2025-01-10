@@ -15,15 +15,15 @@ public interface INavigationService
     /// <summary>
     /// 返回上一页
     /// </summary>
-    Task<bool> GoBackAsync();
+    Task<bool> GoBackAsync(string regionName);
 
     /// <summary>
     /// 是否可以返回
     /// </summary>
-    bool CanGoBack { get; }
+    bool CanGoBack(string regionName);
 
     /// <summary>
     /// 当前视图
     /// </summary>
-    object? CurrentView { get; }
+    object? CurrentView(string regionName);
 }

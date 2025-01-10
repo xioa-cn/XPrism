@@ -15,6 +15,7 @@ public partial class AboutView : Page, INavigationAware {
     }
 
     public async Task<bool> CanNavigateToAsync(INavigationParameters parameters) {
+        var param = parameters.GetValue<string>("key");
         return true;
     }
 
