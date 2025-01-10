@@ -64,8 +64,7 @@ public static class FindModulesHelper {
     }
 
     public static IModuleManager LoadModulesConfig(this IModuleManager manager, string? moduleFileName) {
-        if (moduleFileName == null)
-            throw new ArgumentNullException(nameof(moduleFileName));
+        ArgumentNullException.ThrowIfNull(moduleFileName);
 
         moduleFileName = Path.Combine(moduleFileName, "modules.config");
 
@@ -83,8 +82,6 @@ public static class FindModulesHelper {
             {
                 manager.LoadModule(itemModule.AssemblyFile,moduleName);
             }
-           
-            
         }
         
         return manager;
