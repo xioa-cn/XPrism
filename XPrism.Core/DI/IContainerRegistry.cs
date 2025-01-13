@@ -153,6 +153,12 @@ namespace XPrism.Core.DI {
         /// </summary>
         /// <param name="serviceName"></param>
         void ResetService(string serviceName);
+        
+        /// <summary>
+        /// 重置资源实例
+        /// </summary>
+        /// <param name="type"></param>
+        void ResetService(Type type);
 
         /// <summary>
         /// 通过服务名称获取服务实例

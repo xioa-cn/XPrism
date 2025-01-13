@@ -18,6 +18,7 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
+            <TextBox Text="{Binding Title}"></TextBox>
             <StackPanel Grid.Column="0">
                 <Button Command="{Binding NavigateToPage1Command}" Width="200" Height="50" Margin="10">Nav1</Button>
                 <Button Command="{Binding NavigateToPage2Command}" Width="200" Height="50" Margin="10">Nav1</Button>

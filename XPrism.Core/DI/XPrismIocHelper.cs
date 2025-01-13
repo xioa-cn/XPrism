@@ -86,6 +86,14 @@ public static class XPrismIoc {
         XPrism.Core.DI.ContainerLocator.Container
             .ResetService(resourceKey);
     }
+    /// <summary>
+    /// 重新注册资源，只有使用类型注册的可以重新注册， 实例注册的无法Reset
+    /// </summary>
+    /// <param name="type"></param>
+    public static void ResetXPrismModel(Type type) {
+        XPrism.Core.DI.ContainerLocator.Container
+            .ResetService(type);
+    }
 
     /// <summary>
     /// 重新注册Window和他的Viewmodel

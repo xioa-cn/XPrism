@@ -95,6 +95,23 @@ public class Region : IRegion {
         }
     }
 
+    public void ResetView(string viewName) {
+        if (!_viewTypes.TryGetValue(viewName, out var viewType))
+        {
+            XPrismIoc.ResetXPrismModel(viewType);
+        }
+    }
+
+    public void ResetVm(Type? vmTypeName) {
+        if (vmTypeName != null)
+            XPrismIoc.ResetXPrismModel(vmTypeName);
+    }
+
+    public void ResetViews(string viewName, Type vmType) {
+        ResetView(viewName);
+        ResetVm(vmType);
+    }
+
     public void RegisterView(string viewName, Type viewType) {
         if (string.IsNullOrEmpty(viewName))
             throw new ArgumentNullException(nameof(viewName));
@@ -105,6 +122,7 @@ public class Region : IRegion {
         _viewTypes[viewName] = viewType;
         Debug.WriteLine($"View {viewName} registered in region {Name}");
     }
+
 
     public void RemoveView(string viewName) {
         //TODO 移除视图是为了做什么？ 没有什么意义

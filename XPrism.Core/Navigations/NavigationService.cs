@@ -35,6 +35,25 @@ public class NavigationService : INavigationService {
         return null;
     }
 
+    public void ResetView(string viewNames) {
+        var (regionName, viewName) = ParsePath(viewNames);
+        var region = _regionManager.Regions.GetRegion(regionName);
+        region.ResetView(viewName);
+    }
+
+    public void ResetVm(string viewNames) {
+        var (regionName, viewName) = ParsePath(viewNames);
+        var vmType =
+            _regionManager.GetDataContext(viewName);
+        var region = _regionManager.Regions.GetRegion(regionName);
+        region.ResetVm(vmType);
+    }
+
+    public void ResetViews(string viewNames) {
+        ResetView(viewNames);
+        ResetVm(viewNames);
+    }
+
     public NavigationService(
         IRegionManager regionManager
     ) {

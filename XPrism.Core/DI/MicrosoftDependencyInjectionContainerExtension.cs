@@ -176,6 +176,20 @@ namespace XPrism.Core.DI {
         }
 
 
+        public void ResetService(Type type) {
+            var find =
+                _services.FirstOrDefault(e => e.Key == type);
+            if (find.Value is not null)
+            {
+                //find.Value.Instance = null;
+                find.Value.CachedInstance = null;
+            }
+            else
+            {
+                throw new KeyNotFoundException($"Type {type} is not registered");
+            }
+        }
+
         public object ResolveNamed(Type type, string name) {
             if (_namedServices.TryGetValue((type, name), out var descriptor))
             {

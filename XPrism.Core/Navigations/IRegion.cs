@@ -23,11 +23,33 @@ public interface IRegion {
     /// 导航到指定视图
     /// </summary>
     Task<bool> NavigateAsync(string viewName, INavigationParameters parameters, Type? vmType = null);
+    
+    
+    /// <summary>
+    /// 重置页面
+    /// </summary>
+    /// <param name="viewName"></param>
+    void ResetView(string viewName);
+    /// <summary>
+    /// 重置Vm
+    /// </summary>
+    /// <param name="vmTypeName"></param>
+    void ResetVm(Type? vmTypeName);
+    /// <summary>
+    /// 重置页面和Vm
+    /// </summary>
+    /// <param name="viewName"></param>
+    /// <param name="vmType"></param>
+    void ResetViews(string viewName,Type vmType);
+    
+    
 
     /// <summary>
     /// 注册视图
     /// </summary>
     void RegisterView(string viewName, Type viewType);
+
+   
 
     /// <summary>
     /// 移除视图

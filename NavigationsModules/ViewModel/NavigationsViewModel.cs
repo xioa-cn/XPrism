@@ -20,6 +20,7 @@ public partial class NavigationsViewModel : ViewModelBase {
             {"key","value"},
             {"key2","value2"}
         });
+        _navigationService.ResetViews("MainRegion/About1View");
     }
 
     [RelayCommand]

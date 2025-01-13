@@ -26,4 +26,20 @@ public interface INavigationService
     /// 当前视图
     /// </summary>
     object? CurrentView(string regionName);
+    
+    /// <summary>
+    /// 重置页面
+    /// </summary>
+    /// <param name="viewNames"></param>
+    void ResetView(string viewNames);
+    /// <summary>
+    /// 重置Vm
+    /// </summary>
+    /// <param name="viewNames"></param>
+    void ResetVm(string viewNames);
+    /// <summary>
+    /// 重置页面和Vm
+    /// </summary>
+    /// <param name="viewNames"></param>
+    void ResetViews(string viewNames);
 }

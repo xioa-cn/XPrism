@@ -169,6 +169,11 @@ namespace XPrism.Core.DI {
             _container.ResetService(serviceName);
         }
 
+        public void ResetService(Type type) {
+            DebugLogger.LogInfo($"Resetting Type {type}");
+            _container.ResetService(type);
+        }
+
         public object GetService(Type serviceType, string serviceName) {
             try
             {

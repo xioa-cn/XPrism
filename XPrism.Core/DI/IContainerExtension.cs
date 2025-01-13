@@ -72,6 +72,12 @@ namespace XPrism.Core.DI {
         /// <param name="name"></param>
         void ResetService(string name);
         
+        /// <summary>
+        /// 重新实例资源资源
+        /// </summary>
+        /// <param name="type"></param>
+        void ResetService(Type type);
+        
         
         /// <summary>
         /// 解析一个命名类型的实例
