@@ -3,11 +3,24 @@
 public static class NavigationAwareHelper {
     public static void Push(this Dictionary<string, Stack<NavigationContext>?> navigationAware, string regionName,
         NavigationContext navigationContext) {
-        navigationAware[regionName].Push(navigationContext);
+        if (navigationAware.TryGetValue(regionName, out var stack))
+        {
+            stack ??= new Stack<NavigationContext>();
+            stack.Push(navigationContext);
+        }
+        else
+        {
+            var value = new Stack<NavigationContext>();
+            value.Push(navigationContext);
+            navigationAware.Add(regionName, value);
+        }
     }
 
     public static void Pop(this Dictionary<string, Stack<NavigationContext>?> navigationAware, string regionName) {
-        navigationAware[regionName].Pop();
+        if (navigationAware.TryGetValue(regionName, out var stack))
+        {
+            stack.Pop();
+        }
     }
 
     public static NavigationContext? Peek(this Dictionary<string, Stack<NavigationContext>?> navigationAware,
