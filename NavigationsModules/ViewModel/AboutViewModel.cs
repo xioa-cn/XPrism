@@ -25,17 +25,18 @@ public partial class AboutViewModel : ViewModelBase {
 
     [RelayCommand]
     public async Task CopyRegionView() {
-        var element = await _navigationService.FetchNavigateViewAsync("MainRegion/Ho");
-        if (element is System.Windows.Controls.Page value)
-        {
-            var frame = new Frame();
-            frame.Navigate(value);
-            Content = frame;
-        }
-        else
-        {
-            Content = element;
-        }
+        var element = await _navigationService.FetchNavigateViewAsync("MainRegion/About1View");
+        var type = element?.GetType();
+        // if (element is System.Windows.Controls.Page value)
+        // {
+        //     var frame = new Frame();
+        //     frame.Navigate(value);
+        //     Content = frame;
+        // }
+        // else
+        // {
+        //     Content = element;
+        // }
         
     }
 

@@ -163,8 +163,8 @@ public class NavigationService : INavigationService {
             if (vmType != null)
             {
                 var vm = _container.Resolve(vmType);
-                var result = ((view as FrameworkElement)!).DataContext = vm;
-                return result;
+                ((view as FrameworkElement)!).DataContext = vm;
+                return view;
             }
             else
             {
