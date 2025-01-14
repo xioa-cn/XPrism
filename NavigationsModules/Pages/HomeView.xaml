@@ -7,6 +7,6 @@
       mc:Ignorable="d"
       Title="HomeView" >
     <Grid>
-        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30">HomeView</TextBlock>
+        <TextBox VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30">HomeView</TextBox>
     </Grid>
 </Page>

@@ -17,14 +17,20 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <TextBox Text="{Binding Title}"></TextBox>
             <StackPanel Grid.Column="0">
+                <Button Command="{Binding CopyRegionViewCommand}" Width="200" Height="50" Margin="10">CopyRegionView</Button>
                 <Button Command="{Binding NavigateToPage1Command}" Width="200" Height="50" Margin="10">Nav1</Button>
                 <Button Command="{Binding NavigateToPage2Command}" Width="200" Height="50" Margin="10">Nav1</Button>
+                <Button Command="{Binding NavigateToPage3Command}" Width="200" Height="50" Margin="10">Nav1</Button>
             </StackPanel>
             <Grid Grid.Column="1">
                 <ContentControl nav:RegionManagerProperty.RegionName="AboutRegion"></ContentControl>
+            </Grid>
+            <Grid Grid.Column="2">
+                <ContentControl Content="{Binding Content}"></ContentControl>
             </Grid>
         </Grid>
     </StackPanel>

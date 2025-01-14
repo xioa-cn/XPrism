@@ -28,7 +28,7 @@ public class NavigationsModule : IModule {
                 //导航界面的View 可以选择继承 INavigationAware 也可以不继承 
                 // 导航相关也不需要额外的容器装配代码 只需要使用regionManager.Register注册为导航即可  - 包含 View ViewModel 如下例子
                 regionManager.RegisterForNavigation<AboutView, AboutViewModel>("MainRegion","About1View");
-                
+                regionManager.RegisterViewWithRegion<HomeView>("AboutRegion","Ho");
                 regionManager.RegisterViewWithRegion<About01>("AboutRegion");// 如果不给viewName这个参数 会直接使用 类名
                 regionManager.RegisterViewWithRegion<About02>("AboutRegion");
             });

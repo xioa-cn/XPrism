@@ -95,6 +95,17 @@ public class Region : IRegion {
         }
     }
 
+    public Type? GetViewType(string viewName) {
+        if (_viewTypes.TryGetValue(viewName, out var viewType))
+        {
+            return viewType;
+        }
+
+        Debug.WriteLine($"View {viewName} not found in region {Name}");
+
+        return null;
+    }
+
     public void ResetView(string viewName) {
         if (!_viewTypes.TryGetValue(viewName, out var viewType))
         {

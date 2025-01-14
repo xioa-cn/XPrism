@@ -13,6 +13,13 @@ public interface INavigationService
     Task<bool> NavigateAsync(string path, INavigationParameters? parameters = null);
 
     /// <summary>
+    /// 获取导航界面
+    /// </summary>
+    /// <param name="path"></param>
+    /// <returns></returns>
+    Task<object?> FetchNavigateViewAsync(string path);
+    
+    /// <summary>
     /// 返回上一页
     /// </summary>
     Task<bool> GoBackAsync(string regionName);

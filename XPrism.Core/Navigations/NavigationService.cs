@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Windows;
 using XPrism.Core.DebugLog;
 using XPrism.Core.DI;
 
@@ -130,6 +131,45 @@ public class NavigationService : INavigationService {
             }
 
             return success;
+        }
+        catch (Exception ex)
+        {
+            // 可以添加日志记录
+            DebugLogger.LogError($"Navigation failed: {ex.Message}");
+            return false;
+        }
+    }
+
+    public async Task<object?> FetchNavigateViewAsync(string path) {
+        try
+        {
+            // 解析路径
+            var (regionName, viewName) = ParsePath(path);
+            if (string.IsNullOrEmpty(regionName) || string.IsNullOrEmpty(viewName))
+            {
+                throw new Exception("path is regionName and viewName => mainRegion/home ");
+            }
+
+            
+            var region = _regionManager.Regions.GetRegion(regionName);
+
+            var vmType =
+                _regionManager.GetDataContext(viewName);
+
+          
+            var viewType = region.GetViewType(viewName);
+
+            var view = _container.Resolve(viewType);
+            if (vmType != null)
+            {
+                var vm = _container.Resolve(vmType);
+                var result = ((view as FrameworkElement)!).DataContext = vm;
+                return result;
+            }
+            else
+            {
+                return view;
+            }
         }
         catch (Exception ex)
         {

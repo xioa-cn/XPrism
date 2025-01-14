@@ -24,6 +24,12 @@ public interface IRegion {
     /// </summary>
     Task<bool> NavigateAsync(string viewName, INavigationParameters parameters, Type? vmType = null);
     
+    /// <summary>
+    /// 获取View的类型
+    /// </summary>
+    /// <param name="viewName"></param>
+    /// <returns></returns>
+    Type? GetViewType(string viewName);
     
     /// <summary>
     /// 重置页面
