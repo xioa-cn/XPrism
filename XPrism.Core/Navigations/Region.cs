@@ -107,9 +107,13 @@ public class Region : IRegion {
     }
 
     public void ResetView(string viewName) {
-        if (!_viewTypes.TryGetValue(viewName, out var viewType))
+        if (_viewTypes.TryGetValue(viewName, out var viewType))
         {
             XPrismIoc.ResetXPrismModel(viewType);
+        }
+        else
+        {
+            Debug.WriteLine($"View {viewName} not found in region {Name}");
         }
     }
 
