@@ -22,7 +22,7 @@ namespace XPrism.Core.Modules {
             _loadedModules[moduleName] = moduleInfo;
         }
 
-       
+
         public void RecordLoadedAssembly(string assemblyName, Assembly assembly) {
             _loadedAssemblies[assemblyName] = assembly;
             //DllManager.LoadDll(Path.Combine(baseDir, assemblyName));
@@ -105,8 +105,7 @@ namespace XPrism.Core.Modules {
             }
             else
             {
-                
-                assembly = DllManager.LoadDll(assemblyFile,assemblyPath);
+                assembly = ConfigDllManager.DllManager.LoadDll(assemblyFile, assemblyPath);
                 RecordLoadedAssembly(assemblyPath, assembly);
             }
 
@@ -235,7 +234,7 @@ namespace XPrism.Core.Modules {
 
             _loadedModules.Clear();
             _loadedAssemblies.Clear();
-            DllManager.UnloadAll();
+            ConfigDllManager.DllManager.UnloadAll();
         }
 
         public bool IsModuleLoaded(string moduleName) {

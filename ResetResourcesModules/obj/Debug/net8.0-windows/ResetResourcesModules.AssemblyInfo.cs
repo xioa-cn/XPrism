@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ResetResourcesModules")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b7784327e6174a912a379bb4b37aa4ac8eb4e26")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1f2211ccf2d24599f9299abef51d58b4a5529b32")]
 [assembly: System.Reflection.AssemblyProductAttribute("ResetResourcesModules")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ResetResourcesModules")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

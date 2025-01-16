@@ -37,7 +37,7 @@ public partial class App : Application {
         //var vm = XPrismIoc.Fetch("ResetViewModel");
         if (window is null)
             throw new NullReferenceException();
-        var s = DllManager.LoadedContexts;
+        //var s = DllManager.LoadedContexts;
         window.Show();
     }
 }
