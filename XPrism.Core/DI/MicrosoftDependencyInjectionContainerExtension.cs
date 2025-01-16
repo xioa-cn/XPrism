@@ -310,8 +310,8 @@ namespace XPrism.Core.DI {
             }
 
             // 创建实例
-            var result = constructor.Invoke(parameterInstances);
-
+            //var result = constructor.Invoke(parameterInstances);
+            var result = Activator.CreateInstance(descriptor.ImplementationType, parameterInstances);
             // 如果是单例，缓存实例
             if (descriptor.Lifetime == ServiceLifetime.Singleton)
             {
