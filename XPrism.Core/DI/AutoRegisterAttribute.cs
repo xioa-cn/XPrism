@@ -4,7 +4,7 @@ namespace XPrism.Core.DI
     /// 标记需要自动注册的类型
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-    public class AutoRegisterAttribute : Attribute
+    public class AutoRegisterAttribute : System.Attribute
     {
         /// <summary>
         /// 服务生命周期

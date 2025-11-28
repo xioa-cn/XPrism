@@ -8,16 +8,19 @@ namespace XPrism.Core.Navigations;
 /// <summary>
 /// 导航注册器
 /// </summary>
-public class NavigationRegistry {
+public class NavigationRegistry
+{
     private readonly Dictionary<string, Type> _viewMappings = new();
     private readonly Dictionary<string, Type> _viewModelMappings = new();
     private readonly IContainerProvider _container;
 
-    public NavigationRegistry(IContainerProvider container) {
+    public NavigationRegistry(IContainerProvider container)
+    {
         _container = container;
     }
 
-    public Type? GetViewModelType(string viewName) {
+    public Type? GetViewModelType(string viewName)
+    {
         _viewModelMappings.TryGetValue(viewName, out var viewType);
         return viewType;
     }
@@ -25,7 +28,8 @@ public class NavigationRegistry {
     /// <summary>
     /// 注册视图
     /// </summary>
-    public void RegisterView<TView>(string viewName) where TView : FrameworkElement {
+    public void RegisterView<TView>(string viewName) where TView : FrameworkElement
+    {
         _viewMappings[viewName] = typeof(TView);
     }
 
@@ -34,15 +38,23 @@ public class NavigationRegistry {
     /// </summary>
     public void RegisterView<TView, TViewModel>(string viewName)
         where TView : FrameworkElement
-        where TViewModel : class {
+        where TViewModel : class
+    {
         _viewMappings[viewName] = typeof(TView);
         _viewModelMappings[viewName] = typeof(TViewModel);
+    }
+
+    public void RegisterView(Type view, Type viewModel, string viewName)
+    {
+        _viewMappings[viewName] = view;
+        _viewModelMappings[viewName] = viewModel;
     }
 
     /// <summary>
     /// 创建视图实例
     /// </summary>
-    public object? CreateView(string viewName) {
+    public object? CreateView(string viewName)
+    {
         if (!_viewMappings.TryGetValue(viewName, out var viewType))
             return null;
 

@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ijxLEL/eVm0=",
+  "dgSpecHash": "9+5netSvIYY=",
   "success": true,
-  "projectFilePath": "F:\\git\\github\\XPrism\\MainModules\\MainModules.csproj",
+  "projectFilePath": "E:\\git仓库\\github\\XPrism\\MainModules\\MainModules.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Administrator\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512"
+    "D:\\nuget\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512"
   ],
   "logs": []
 }

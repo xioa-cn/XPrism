@@ -1,23 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "F:\\git\\github\\XPrism\\XPrism.Demo\\XPrism.Demo.csproj": {}
+    "E:\\git仓库\\github\\XPrism\\XPrism.Demo\\XPrism.Demo.csproj": {}
   },
   "projects": {
-    "F:\\git\\github\\XPrism\\DialogModules\\DialogModules.csproj": {
+    "E:\\git仓库\\github\\XPrism\\DialogModules\\DialogModules.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\git\\github\\XPrism\\DialogModules\\DialogModules.csproj",
+        "projectUniqueName": "E:\\git仓库\\github\\XPrism\\DialogModules\\DialogModules.csproj",
         "projectName": "DialogModules",
-        "projectPath": "F:\\git\\github\\XPrism\\DialogModules\\DialogModules.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "F:\\git\\github\\XPrism\\DialogModules\\obj\\",
+        "projectPath": "E:\\git仓库\\github\\XPrism\\DialogModules\\DialogModules.csproj",
+        "packagesPath": "D:\\nuget",
+        "outputPath": "E:\\git仓库\\github\\XPrism\\DialogModules\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "E:\\SDK\\NuGetPackages"
+          "D:\\DevExpress 24.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\刘\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 24.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -27,17 +29,18 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
+          "D:\\DevExpress 24.2\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "F:\\git\\github\\XPrism\\ModelModules\\ModelModules.csproj": {
-                "projectPath": "F:\\git\\github\\XPrism\\ModelModules\\ModelModules.csproj"
+              "E:\\git仓库\\github\\XPrism\\ModelModules\\ModelModules.csproj": {
+                "projectPath": "E:\\git仓库\\github\\XPrism\\ModelModules\\ModelModules.csproj"
               },
-              "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj": {
-                "projectPath": "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj"
+              "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj": {
+                "projectPath": "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj"
               }
             }
           }
@@ -50,9 +53,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -76,24 +79,26 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200-preview.0.24575.35/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\git\\github\\XPrism\\HomeModules\\HomeModules.csproj": {
+    "E:\\git仓库\\github\\XPrism\\HomeModules\\HomeModules.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\git\\github\\XPrism\\HomeModules\\HomeModules.csproj",
+        "projectUniqueName": "E:\\git仓库\\github\\XPrism\\HomeModules\\HomeModules.csproj",
         "projectName": "HomeModules",
-        "projectPath": "F:\\git\\github\\XPrism\\HomeModules\\HomeModules.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "F:\\git\\github\\XPrism\\HomeModules\\obj\\",
+        "projectPath": "E:\\git仓库\\github\\XPrism\\HomeModules\\HomeModules.csproj",
+        "packagesPath": "D:\\nuget",
+        "outputPath": "E:\\git仓库\\github\\XPrism\\HomeModules\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "E:\\SDK\\NuGetPackages"
+          "D:\\DevExpress 24.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\刘\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 24.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -103,17 +108,18 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
+          "D:\\DevExpress 24.2\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "F:\\git\\github\\XPrism\\DialogModules\\DialogModules.csproj": {
-                "projectPath": "F:\\git\\github\\XPrism\\DialogModules\\DialogModules.csproj"
+              "E:\\git仓库\\github\\XPrism\\DialogModules\\DialogModules.csproj": {
+                "projectPath": "E:\\git仓库\\github\\XPrism\\DialogModules\\DialogModules.csproj"
               },
-              "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj": {
-                "projectPath": "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj"
+              "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj": {
+                "projectPath": "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj"
               }
             }
           }
@@ -126,9 +132,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -152,24 +158,26 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200-preview.0.24575.35/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\git\\github\\XPrism\\MainModules\\MainModules.csproj": {
+    "E:\\git仓库\\github\\XPrism\\MainModules\\MainModules.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\git\\github\\XPrism\\MainModules\\MainModules.csproj",
+        "projectUniqueName": "E:\\git仓库\\github\\XPrism\\MainModules\\MainModules.csproj",
         "projectName": "MainModules",
-        "projectPath": "F:\\git\\github\\XPrism\\MainModules\\MainModules.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "F:\\git\\github\\XPrism\\MainModules\\obj\\",
+        "projectPath": "E:\\git仓库\\github\\XPrism\\MainModules\\MainModules.csproj",
+        "packagesPath": "D:\\nuget",
+        "outputPath": "E:\\git仓库\\github\\XPrism\\MainModules\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "E:\\SDK\\NuGetPackages"
+          "D:\\DevExpress 24.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\刘\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 24.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -179,20 +187,21 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
+          "D:\\DevExpress 24.2\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "F:\\git\\github\\XPrism\\DialogModules\\DialogModules.csproj": {
-                "projectPath": "F:\\git\\github\\XPrism\\DialogModules\\DialogModules.csproj"
+              "E:\\git仓库\\github\\XPrism\\DialogModules\\DialogModules.csproj": {
+                "projectPath": "E:\\git仓库\\github\\XPrism\\DialogModules\\DialogModules.csproj"
               },
-              "F:\\git\\github\\XPrism\\HomeModules\\HomeModules.csproj": {
-                "projectPath": "F:\\git\\github\\XPrism\\HomeModules\\HomeModules.csproj"
+              "E:\\git仓库\\github\\XPrism\\HomeModules\\HomeModules.csproj": {
+                "projectPath": "E:\\git仓库\\github\\XPrism\\HomeModules\\HomeModules.csproj"
               },
-              "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj": {
-                "projectPath": "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj"
+              "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj": {
+                "projectPath": "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj"
               }
             }
           }
@@ -205,9 +214,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -231,24 +240,26 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200-preview.0.24575.35/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\git\\github\\XPrism\\ModelModules\\ModelModules.csproj": {
+    "E:\\git仓库\\github\\XPrism\\ModelModules\\ModelModules.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\git\\github\\XPrism\\ModelModules\\ModelModules.csproj",
+        "projectUniqueName": "E:\\git仓库\\github\\XPrism\\ModelModules\\ModelModules.csproj",
         "projectName": "ModelModules",
-        "projectPath": "F:\\git\\github\\XPrism\\ModelModules\\ModelModules.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "F:\\git\\github\\XPrism\\ModelModules\\obj\\",
+        "projectPath": "E:\\git仓库\\github\\XPrism\\ModelModules\\ModelModules.csproj",
+        "packagesPath": "D:\\nuget",
+        "outputPath": "E:\\git仓库\\github\\XPrism\\ModelModules\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "E:\\SDK\\NuGetPackages"
+          "D:\\DevExpress 24.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\刘\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 24.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -258,14 +269,15 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
+          "D:\\DevExpress 24.2\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj": {
-                "projectPath": "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj"
+              "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj": {
+                "projectPath": "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj"
               }
             }
           }
@@ -278,9 +290,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -304,24 +316,26 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200-preview.0.24575.35/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\git\\github\\XPrism\\NavigationsModules\\NavigationsModules.csproj": {
+    "E:\\git仓库\\github\\XPrism\\NavigationsModules\\NavigationsModules.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\git\\github\\XPrism\\NavigationsModules\\NavigationsModules.csproj",
+        "projectUniqueName": "E:\\git仓库\\github\\XPrism\\NavigationsModules\\NavigationsModules.csproj",
         "projectName": "NavigationsModules",
-        "projectPath": "F:\\git\\github\\XPrism\\NavigationsModules\\NavigationsModules.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "F:\\git\\github\\XPrism\\NavigationsModules\\obj\\",
+        "projectPath": "E:\\git仓库\\github\\XPrism\\NavigationsModules\\NavigationsModules.csproj",
+        "packagesPath": "D:\\nuget",
+        "outputPath": "E:\\git仓库\\github\\XPrism\\NavigationsModules\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "E:\\SDK\\NuGetPackages"
+          "D:\\DevExpress 24.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\刘\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 24.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -331,14 +345,15 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
+          "D:\\DevExpress 24.2\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj": {
-                "projectPath": "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj"
+              "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj": {
+                "projectPath": "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj"
               }
             }
           }
@@ -351,9 +366,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -377,24 +392,26 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200-preview.0.24575.35/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\git\\github\\XPrism\\ResetResourcesModules\\ResetResourcesModules.csproj": {
+    "E:\\git仓库\\github\\XPrism\\ResetResourcesModules\\ResetResourcesModules.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\git\\github\\XPrism\\ResetResourcesModules\\ResetResourcesModules.csproj",
+        "projectUniqueName": "E:\\git仓库\\github\\XPrism\\ResetResourcesModules\\ResetResourcesModules.csproj",
         "projectName": "ResetResourcesModules",
-        "projectPath": "F:\\git\\github\\XPrism\\ResetResourcesModules\\ResetResourcesModules.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "F:\\git\\github\\XPrism\\ResetResourcesModules\\obj\\",
+        "projectPath": "E:\\git仓库\\github\\XPrism\\ResetResourcesModules\\ResetResourcesModules.csproj",
+        "packagesPath": "D:\\nuget",
+        "outputPath": "E:\\git仓库\\github\\XPrism\\ResetResourcesModules\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "E:\\SDK\\NuGetPackages"
+          "D:\\DevExpress 24.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\刘\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 24.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -404,14 +421,15 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
+          "D:\\DevExpress 24.2\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj": {
-                "projectPath": "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj"
+              "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj": {
+                "projectPath": "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj"
               }
             }
           }
@@ -424,9 +442,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -450,24 +468,26 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200-preview.0.24575.35/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj": {
+    "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj",
+        "projectUniqueName": "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj",
         "projectName": "XPrism.Core",
-        "projectPath": "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "F:\\git\\github\\XPrism\\XPrism.Core\\obj\\",
+        "projectPath": "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj",
+        "packagesPath": "D:\\nuget",
+        "outputPath": "E:\\git仓库\\github\\XPrism\\XPrism.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "E:\\SDK\\NuGetPackages"
+          "D:\\DevExpress 24.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\刘\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 24.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -477,6 +497,7 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
+          "D:\\DevExpress 24.2\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -493,9 +514,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -525,24 +546,26 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200-preview.0.24575.35/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\git\\github\\XPrism\\XPrism.Demo\\XPrism.Demo.csproj": {
+    "E:\\git仓库\\github\\XPrism\\XPrism.Demo\\XPrism.Demo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\git\\github\\XPrism\\XPrism.Demo\\XPrism.Demo.csproj",
+        "projectUniqueName": "E:\\git仓库\\github\\XPrism\\XPrism.Demo\\XPrism.Demo.csproj",
         "projectName": "XPrism.Demo",
-        "projectPath": "F:\\git\\github\\XPrism\\XPrism.Demo\\XPrism.Demo.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "F:\\git\\github\\XPrism\\XPrism.Demo\\obj\\",
+        "projectPath": "E:\\git仓库\\github\\XPrism\\XPrism.Demo\\XPrism.Demo.csproj",
+        "packagesPath": "D:\\nuget",
+        "outputPath": "E:\\git仓库\\github\\XPrism\\XPrism.Demo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "E:\\SDK\\NuGetPackages"
+          "D:\\DevExpress 24.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\刘\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 24.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -552,26 +575,27 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
+          "D:\\DevExpress 24.2\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "F:\\git\\github\\XPrism\\HomeModules\\HomeModules.csproj": {
-                "projectPath": "F:\\git\\github\\XPrism\\HomeModules\\HomeModules.csproj"
+              "E:\\git仓库\\github\\XPrism\\HomeModules\\HomeModules.csproj": {
+                "projectPath": "E:\\git仓库\\github\\XPrism\\HomeModules\\HomeModules.csproj"
               },
-              "F:\\git\\github\\XPrism\\MainModules\\MainModules.csproj": {
-                "projectPath": "F:\\git\\github\\XPrism\\MainModules\\MainModules.csproj"
+              "E:\\git仓库\\github\\XPrism\\MainModules\\MainModules.csproj": {
+                "projectPath": "E:\\git仓库\\github\\XPrism\\MainModules\\MainModules.csproj"
               },
-              "F:\\git\\github\\XPrism\\NavigationsModules\\NavigationsModules.csproj": {
-                "projectPath": "F:\\git\\github\\XPrism\\NavigationsModules\\NavigationsModules.csproj"
+              "E:\\git仓库\\github\\XPrism\\NavigationsModules\\NavigationsModules.csproj": {
+                "projectPath": "E:\\git仓库\\github\\XPrism\\NavigationsModules\\NavigationsModules.csproj"
               },
-              "F:\\git\\github\\XPrism\\ResetResourcesModules\\ResetResourcesModules.csproj": {
-                "projectPath": "F:\\git\\github\\XPrism\\ResetResourcesModules\\ResetResourcesModules.csproj"
+              "E:\\git仓库\\github\\XPrism\\ResetResourcesModules\\ResetResourcesModules.csproj": {
+                "projectPath": "E:\\git仓库\\github\\XPrism\\ResetResourcesModules\\ResetResourcesModules.csproj"
               },
-              "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj": {
-                "projectPath": "F:\\git\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj"
+              "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj": {
+                "projectPath": "E:\\git仓库\\github\\XPrism\\XPrism.Core\\XPrism.Core.csproj"
               }
             }
           }
@@ -584,9 +608,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -610,7 +634,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200-preview.0.24575.35/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

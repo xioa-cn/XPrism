@@ -4,7 +4,7 @@ namespace XPrism.Core.Modules.Find
     /// 模块特性，用于标记和配置模块
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-    public class ModuleAttribute : Attribute
+    public class ModuleAttribute : System.Attribute
     {
         /// <summary>
         /// 模块名称

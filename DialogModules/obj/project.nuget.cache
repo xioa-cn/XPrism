@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "qamTPOFioTc=",
+  "dgSpecHash": "7BbwJ2XyWP8=",
   "success": true,
-  "projectFilePath": "F:\\git\\github\\XPrism\\DialogModules\\DialogModules.csproj",
+  "projectFilePath": "E:\\git仓库\\github\\XPrism\\DialogModules\\DialogModules.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Administrator\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512"
+    "D:\\nuget\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512"
   ],
   "logs": []
 }

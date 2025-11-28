@@ -46,4 +46,6 @@ public interface IRegionManager {
     /// <typeparam name="TViewModel"></typeparam>
     void RegisterForNavigation<TView, TViewModel>(string regionName, string? viewName = null) where TView : FrameworkElement
         where TViewModel : class;
+
+    void RegisterForNavigation(Type view,Type viewModel,string regionName, string viewName);
 }
